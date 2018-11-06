@@ -1,5 +1,7 @@
 package com.ly.reflect.demo;
 
+import com.ly.reflect.dto.Person;
+
 import java.lang.reflect.Constructor;
 
 /**
@@ -12,11 +14,20 @@ public class ConstructorDemo {
     public static void main(String[] args) throws Exception {
         //1:获取字节码文件
         Class c = Class.forName("com.ly.reflect.dto.Person");
-        showGetConstructors(c);//获取所有公共构造方法 并打印
+        //2:获取所有公共构造方法 并打印
+        showGetConstructors(c);
         System.out.println("=================================");
-        showGetDeclaredConstructors(c);//获取所有构造方法 并打印
+        //3:获取所有构造方法 并打印
+        showGetDeclaredConstructors(c);
+        //4:获取单个构造方法
         System.out.println("=================================");
-        getSingleConstructor(c);
+        //4.1 无参构造方法
+        Person p = (Person) getSingleConstructor(c);
+        p.show();
+        System.out.println("=================================");
+        //4.2 带参构造方法
+        Person pWithParam = (Person) getSingleConstructorWithParam(c);
+        pWithParam.show();
     }
 
     /**
@@ -57,6 +68,28 @@ public class ConstructorDemo {
          * 使用此 Constructor 对象表示的构造方法来创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例。
          */
         Object obj = con.newInstance();
+        System.out.println(obj);
+        return obj;
+    }
+
+
+    /**
+     * 通过反射获取带参构造函数并使用
+     * public Person(String name, int age, String address)
+     * public Constructor<T> getConstructor(Class<?>... parameterTypes)
+     * parameterTypes表示：
+     * 你要获取的构造方法的构造参数个数及数据类型的class字节码文件对象
+     *
+     * @param c Person类的字节码文件
+     * @return
+     */
+    private static Object getSingleConstructorWithParam(Class c) throws Exception {
+        Constructor con = c.getConstructor(String.class, int.class, String.class);// 返回的是构造方法对象
+        /**
+         * public T newInstance(Object... initargs)
+         * 使用此 Constructor 对象表示的构造方法来创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例。
+         */
+        Object obj = con.newInstance("众小安", 5, "上海市黄浦区外滩");
         System.out.println(obj);
         return obj;
     }
