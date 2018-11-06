@@ -45,7 +45,7 @@ public class ReflectDemo {
         Class c3 = Person.class;
         // int.class;
         // String.class;
-        System.out.println(c == c3);
+        System.out.println(c == c3);//true 同一个对象 字节码只有一个
 
         // 方式3
         // ClassNotFoundException
