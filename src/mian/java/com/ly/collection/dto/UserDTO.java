@@ -71,7 +71,8 @@ public class UserDTO implements Comparable {
             if(compare != 0){
                 return compare;
             }else{
-                return Integer.compare(this.age,user.age);
+                int compareAge = Integer.compare(this.age, user.age);
+                return compareAge;
             }
         }else{
             throw new RuntimeException("输入的类型不匹配");
