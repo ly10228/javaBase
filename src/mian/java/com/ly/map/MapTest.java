@@ -221,9 +221,9 @@ public class MapTest {
      */
     @Test
     public void testFor(){
-        Map map = new HashMap();
+        Map<String,Integer> map = new HashMap();
         map.put("AA",123);
-        map.put(45,1234);
+        map.put("DD",1234);
         map.put("BB",56);
 
         //遍历所有的key集：keySet()
@@ -260,7 +260,10 @@ public class MapTest {
             System.out.println(key + "=====" + value);
 
         }
-
+        //方式三
+        for (Map.Entry<String,Integer> entry:map.entrySet()){
+            System.out.println(entry);
+        }
     }
 
 }
