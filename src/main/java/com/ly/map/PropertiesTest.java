@@ -16,7 +16,7 @@ public class PropertiesTest {
         try {
             Properties pros = new Properties();
 
-            fis = new FileInputStream("   src/main/resource/jdbc.properties");
+            fis = new FileInputStream("src/main/resource/jdbc.properties");
             pros.load(fis);//加载流对应的文件
 
             String name = pros.getProperty("name");
