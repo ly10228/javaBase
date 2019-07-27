@@ -2,7 +2,7 @@ package com.ly.senior.datastructure.queue;
 
 /**
  * @author luoyong
- * @Description: ArrayQueue 模拟队列
+ * @Description: ArrayQueue 模拟队列 只能用一次
  * @create 2019-07-17 8:04
  * @last modify by [LuoYong 2019-07-17 8:04]
  **/
