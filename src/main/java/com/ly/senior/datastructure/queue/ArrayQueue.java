@@ -7,7 +7,9 @@ package com.ly.senior.datastructure.queue;
  * @last modify by [LuoYong 2019-07-17 8:04]
  **/
 public class ArrayQueue {
-    // 表示数组的最大容量
+    /**
+     * 表示数据最大容量
+     */
     private int maxSize;
     // 队列头
     private int front;
