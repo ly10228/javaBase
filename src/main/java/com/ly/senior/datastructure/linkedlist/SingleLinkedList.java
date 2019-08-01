@@ -7,9 +7,7 @@ package com.ly.senior.datastructure.linkedlist;
  * @last modify by [LuoYong 2019-07-27 17:21]
  **/
 public class SingleLinkedList {
-    /**
-     * 初始化一个头结点
-     */
+    //初始化一个头节点
     private HeroNode head = new HeroNode(0, "", "");
 
     /**
