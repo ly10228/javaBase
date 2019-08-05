@@ -90,6 +90,73 @@ public class SingleLinkedListTest {
     /**
      * @param
      * @return void
+     * @Description: 根据编号修改单链表
+     * @author luoyong
+     * @create 9:53 2019/8/3
+     * @last modify by [LuoYong 9:53 2019/8/3 ]
+     */
+    @Test
+    public void updateSingleLinkedList() {
+        SingleLinkedList singleLinkedList = initSingleLinkedList();
+        System.out.println("修改之前的单链表");
+        singleLinkedList.list();
+        HeroNode heroTwo = new HeroNode(2, "卢俊义~~", "玉麒麟~~");
+        singleLinkedList.update(heroTwo);
+        System.out.println("修改之后的单链表");
+        singleLinkedList.list();
+    }
+
+    /**
+     * @param
+     * @return void
+     * @Description: 删除单链表节点
+     * @author luoyong
+     * @create 17:22 2019/8/3
+     * @last modify by [LuoYong 17:22 2019/8/3 ]
+     */
+    @Test
+    public void delSingleLinkedList() {
+        SingleLinkedList singleLinkedList = initSingleLinkedList();
+        System.out.println("删除之前的单链表");
+        singleLinkedList.list();
+        singleLinkedList.del(2);
+        System.out.println("删除之后的单链表");
+        singleLinkedList.list();
+    }
+
+    /**
+     * @param
+     * @return void
+     * @Description: 测试获取单链表有有效节点个数
+     * @author luoyong
+     * @create 17:43 2019/8/3
+     * @last modify by [LuoYong 17:43 2019/8/3 ]
+     */
+    @Test
+    public void getSingleLinkedSize() {
+        SingleLinkedList singleLinkedList = initSingleLinkedList();
+        int size = getLength(singleLinkedList.getHead());
+        System.out.println("单链表有效节点的个数=" + size);
+    }
+
+    /**
+     * @param
+     * @return void
+     * @Description: 获取倒数第k个节点
+     * @author luoyong
+     * @create 22:49 2019/8/5
+     * @last modify by [LuoYong 22:49 2019/8/5 ]
+     */
+    @Test
+    public void getHeroNodeByIndexTest() {
+        SingleLinkedList singleLinkedList = initSingleLinkedList();
+        HeroNode heroNode = getHeroNodeByIndex(singleLinkedList.getHead(), 2);
+        System.out.println(heroNode);
+    }
+
+    /**
+     * @param
+     * @return void
      * @Description: 逆序打印单链表 不修改单链表的结构
      * 可以利用栈的特性 先进后出 实现了逆序打印的效果
      * @author luoyong
@@ -138,7 +205,7 @@ public class SingleLinkedListTest {
             //当前节点不为空
             //先暂时保存当前节点的下一个节点
             next = curNode.next;
-            //将curNode的下一个节点指向新链表的最前端
+            //reverseHead.next赋值给curNode.next
             curNode.next = reverseHead.next;
             //将curNod连接到新的链表上
             reverseHead.next = curNode;
@@ -172,6 +239,53 @@ public class SingleLinkedListTest {
         singleLinkedList.add(heroThree);
         singleLinkedList.add(heroFour);
         return singleLinkedList;
+    }
+
+
+    /**
+     * @param head 链表的头节点
+     * @return int
+     * @Description: 获取单链表头节点的数量
+     * @author luoyong
+     * @create 17:40 2019/8/3
+     * @last modify by [LuoYong 17:40 2019/8/3 ]
+     */
+    private int getLength(HeroNode head) {
+        //定义变量
+        int length = 0;
+        HeroNode temp = head.next;
+        while (null != temp) {
+            length++;
+            temp = temp.next;
+        }
+        return length;
+    }
+
+    /**
+     * @param head 头节点
+     * @param k
+     * @return
+     * @Description: 查找链表当中倒数第k个节点
+     * @author luoyong
+     * @create 17:51 2019/8/3
+     * @last modify by [LuoYong 17:51 2019/8/3 ]
+     */
+    private HeroNode getHeroNodeByIndex(HeroNode head, int k) {
+        if (null == head.next) {
+            //当前链表为空
+            return null;
+        }
+        //1:获取链表的长度
+        int size = getLength(head);
+        if (k < 1 || k > size) {
+            return null;
+        }
+        //当前节点
+        HeroNode currentNode = head.next;
+        for (int i = 0; i < size - k; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
     }
 
 }

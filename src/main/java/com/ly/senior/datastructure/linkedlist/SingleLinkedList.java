@@ -3,6 +3,10 @@ package com.ly.senior.datastructure.linkedlist;
 /**
  * @author luoyong
  * @Description: SingleLinkedList 管理hero
+ * 1:链表是以节点的方式来存储的：是链式存储
+ * 2：每个节点包含data域 ，next域指向下一个节点
+ * 3：链表的各个节点不一定是连续存储的
+ * 4：链表分带头节点的链表和没有头节点的链表，根据实际的需求来确定
  * @create 2019-07-27 17:21
  * @last modify by [LuoYong 2019-07-27 17:21]
  **/
