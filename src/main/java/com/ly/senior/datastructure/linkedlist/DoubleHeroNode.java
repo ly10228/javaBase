@@ -41,4 +41,13 @@ public class DoubleHeroNode implements Serializable {
         this.name = name;
         this.nickName = nickName;
     }
+
+    @Override
+    public String toString() {
+        return "DoubleHeroNode{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                ", nickName='" + nickName + '\'' +
+                '}';
+    }
 }
