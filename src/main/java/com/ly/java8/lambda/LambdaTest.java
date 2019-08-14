@@ -3,8 +3,7 @@ package com.ly.java8.lambda;
 import com.ly.java8.lambda.dto.Employee;
 import org.junit.Test;
 
-import java.util.Comparator;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author luoyong
@@ -89,5 +88,80 @@ public class LambdaTest {
             System.out.println(employee);
         }
     }
+
+
+    List<Employee> employeeList = Arrays.asList(
+            new Employee(101, "张三", 18, 9999.99),
+            new Employee(102, "李四", 59, 6666.66),
+            new Employee(103, "王五", 28, 8888.88),
+            new Employee(104, "赵六", 8, 7777.77),
+            new Employee(105, "田七", 38, 5555.55)
+    );
+
+
+    /**
+     * @return void
+     * @Description: 测试  获取公司中年龄小于 35 的员工信息 或者 获取公司中工资大于 5000 的员工信息
+     * @author luoyong
+     * @create 17:54 2019-08-14
+     * @last modify by [luoyong 17:54 2019-08-14 ]
+     */
+    @Test
+    public void testThree() {
+        //1:获取公司中年龄小于 35 的员工信息
+        System.out.println("获取公司中年龄小于 35 的员工信息");
+        List<Employee> employeeAgeList = filterEmployeeAge(employeeList);
+        for (Employee employee : employeeAgeList) {
+            System.out.println(employee);
+        }
+        System.out.println("获取公司中工资大于 5000 的员工信息");
+        //2:获取公司中工资大于 5000 的员工信息
+        List<Employee> employeeSalaryList = filterEmployeeSalary(employeeList);
+        for (Employee employee : employeeSalaryList) {
+            System.out.println(employee);
+        }
+    }
+
+    /**
+     * @param employeeList 员工集合
+     * @return
+     * @Description: 获取公司中年龄小于 35 的员工信息
+     * @author luoyong
+     * @create 17:54 2019-08-14
+     * @last modify by [luoyong 17:54 2019-08-14 ]
+     */
+    public List<Employee> filterEmployeeAge(List<Employee> employeeList) {
+        List<Employee> list = new ArrayList<>();
+
+        for (Employee emp : employeeList) {
+            if (emp.getAge() <= 35) {
+                list.add(emp);
+            }
+        }
+
+        return list;
+    }
+
+
+    /**
+     * @param employeeList 员工集合
+     * @return
+     * @Description: 获取公司中工资大于 5000 的员工信息
+     * @author luoyong
+     * @create 17:54 2019-08-14
+     * @last modify by [luoyong 17:54 2019-08-14 ]
+     */
+    public List<Employee> filterEmployeeSalary(List<Employee> employeeList) {
+        List<Employee> list = new ArrayList<>();
+
+        for (Employee emp : employeeList) {
+            if (emp.getSalary() >= 5000) {
+                list.add(emp);
+            }
+        }
+
+        return list;
+    }
+
 
 }
