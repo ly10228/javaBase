@@ -65,5 +65,29 @@ public class LambdaTest {
 
     }
 
+    /**
+     * @return void
+     * @Description: 用Lambda来实现排序
+     * @author luoyong
+     * @create 17:41 2019-08-14
+     * @last modify by [luoyong 17:41 2019-08-14 ]
+     */
+    @Test
+    public void testUseLambda() {
+        Comparator<Employee> com = (x, y) -> Integer.compare(x.getAge(), y.getAge());
+        TreeSet<Employee> employeeTreeSet = new TreeSet<>(com);
+        employeeTreeSet.add(new Employee(1, "Tom", 12, 50000));
+        employeeTreeSet.add(new Employee(2, "Jerry", 32, 6000));
+        employeeTreeSet.add(new Employee(3, "Jim", 2, 7000));
+        employeeTreeSet.add(new Employee(4, "Mike", 65, 8000));
+        employeeTreeSet.add(new Employee(5, "Mary", 33, 9000));
+        employeeTreeSet.add(new Employee(6, "Jack", 36, 10000));
+        employeeTreeSet.add(new Employee(7, "Jack", 56, 11000));
+
+        //遍历
+        for (Employee employee : employeeTreeSet) {
+            System.out.println(employee);
+        }
+    }
 
 }
