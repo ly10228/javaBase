@@ -1,6 +1,9 @@
 package com.ly.java8.lambda;
 
 import com.ly.java8.lambda.dto.Employee;
+import com.ly.java8.lambda.strategypattern.FilterEmployeeForAge;
+import com.ly.java8.lambda.strategypattern.FilterEmployeeForSalary;
+import com.ly.java8.lambda.strategypattern.MyPredicate;
 import org.junit.Test;
 
 import java.util.*;
@@ -161,6 +164,116 @@ public class LambdaTest {
         }
 
         return list;
+    }
+
+
+    /**
+     * @param employeeList 员工列表
+     * @param mp           员工接口
+     * @return
+     * @Description: 策略模式处理员工
+     * @author luoyong
+     * @create 16:13 2019-08-15
+     * @last modify by [luoyong 16:13 2019-08-15 ]
+     */
+    public List<Employee> filterEmployee(List<Employee> employeeList, MyPredicate<Employee> mp) {
+        List<Employee> list = new ArrayList<>();
+
+        for (Employee employee : employeeList) {
+            if (mp.isFit(employee)) {
+                list.add(employee);
+            }
+        }
+
+        return list;
+    }
+
+
+    /**
+     * @return void
+     * @Description: 优化方式一--使用策略模式过滤员工信息
+     * @author luoyong
+     * @create 16:19 2019-08-15
+     * @last modify by [luoyong 16:19 2019-08-15 ]
+     */
+    @Test
+    public void testStrategyFilterEmp() {
+        System.out.println("根据年龄过滤");
+        //根据年龄过滤
+        List<Employee> employeeAgeList = filterEmployee(employeeList, new FilterEmployeeForAge());
+        employeeAgeList.forEach(e -> System.out.println(e));
+        System.out.println("根据薪资过滤");
+        List<Employee> employeeSalaryList = filterEmployee(employeeList, new FilterEmployeeForSalary());
+        employeeSalaryList.forEach(e -> System.out.println(e));
+    }
+
+    /**
+     * @return void
+     * @Description: 优化方式二--匿名内部类来过滤员工信息
+     * @author luoyong
+     * @create 16:26 2019-08-15
+     * @last modify by [luoyong 16:26 2019-08-15 ]
+     */
+    @Test
+    public void testAnonymousClassFilterEmp() {
+        System.out.println("根据年龄过滤");
+        //根据年龄过滤
+        List<Employee> employeeAgeList = filterEmployee(employeeList, new MyPredicate<Employee>() {
+            @Override
+            public boolean isFit(Employee employee) {
+                return employee.getAge() > 10;
+            }
+        });
+        employeeAgeList.forEach(e -> System.out.println(e));
+
+        System.out.println("根据薪资过滤");
+        List<Employee> employeeSalaryList = filterEmployee(employeeList, new MyPredicate<Employee>() {
+            @Override
+            public boolean isFit(Employee employee) {
+                return employee.getSalary() > 1000;
+            }
+        });
+        employeeSalaryList.forEach(e -> System.out.println(e));
+    }
+
+
+    /**
+     * @return void
+     * @Description: 优化方式三--根据Lambda表达式过滤
+     * @author luoyong
+     * @create 16:30 2019-08-15
+     * @last modify by [luoyong 16:30 2019-08-15 ]
+     */
+    @Test
+    public void testLambdaFilterEmp() {
+        System.out.println("根据年龄过滤");
+        //根据年龄过滤
+        List<Employee> employeeAgeList = filterEmployee(employeeList, employee -> employee.getAge() > 10);
+        employeeAgeList.forEach(System.out::println);
+
+        System.out.println("根据薪资过滤");
+        List<Employee> employeeSalaryList = filterEmployee(employeeList, employee -> employee.getSalary() > 6000);
+        employeeSalaryList.forEach(System.out::println);
+    }
+
+    /**
+     * @return void
+     * @Description: 优化方式四--根据StreamAPI过滤员工数据
+     * @author luoyong
+     * @create 16:45 2019-08-15
+     * @last modify by [luoyong 16:45 2019-08-15 ]
+     */
+    @Test
+    public void testStreamAPIFilterEmp() {
+
+        System.out.println("根据年龄过滤");
+        employeeList.stream().filter(employee -> employee.getAge() > 10).forEach(System.out::println);
+
+        System.out.println("根据年龄过滤--只显示前两条");
+        employeeList.stream().filter(employee -> employee.getAge() > 10).limit(2).forEach(System.out::println);
+
+        System.out.println("根据薪资");
+        employeeList.stream().filter(employee -> employee.getSalary() > 2000).forEach(System.out::println);
     }
 
 
