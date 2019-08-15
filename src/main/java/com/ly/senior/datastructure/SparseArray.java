@@ -60,11 +60,11 @@ public class SparseArray {
         sparseArr[0][2] = sum;
         //遍历二维数据 将非零的值存入到稀疏数据当中
         //用来记录非0的个数
-        int count=0;
+        int count = 0;
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
-                int value=priChessArr[i][j];
-                if (value!= 0) {
+                int value = priChessArr[i][j];
+                if (value != 0) {
                     count++;
                     sparseArr[count][0] = i;
                     sparseArr[count][1] = j;
@@ -82,15 +82,15 @@ public class SparseArray {
         }
 
         //将稀疏数组还原成二位数组
-        int rowLength=sparseArr[0][0];
-        int columnLength=sparseArr[0][1];
+        int rowLength = sparseArr[0][0];
+        int columnLength = sparseArr[0][1];
 
-        int [][] newArr=new int[rowLength][columnLength];
-        for (int i=1;i<sparseArr.length;i++) {
-            int newArrRow=sparseArr[i][0];
-            int newArrColumn=sparseArr[i][1];
-            int newValue=sparseArr[i][2];
-            newArr[newArrRow][newArrColumn]=newValue;
+        int[][] newArr = new int[rowLength][columnLength];
+        for (int i = 1; i < sparseArr.length; i++) {
+            int newArrRow = sparseArr[i][0];
+            int newArrColumn = sparseArr[i][1];
+            int newValue = sparseArr[i][2];
+            newArr[newArrRow][newArrColumn] = newValue;
         }
         System.out.println("稀疏数组还原成二维数组是");
         for (int[] row : newArr) {
