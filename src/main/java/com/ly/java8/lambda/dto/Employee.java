@@ -33,4 +33,11 @@ public class Employee {
         this.age = age;
         this.salary = salary;
     }
+
+    public String show() {
+        return "测试方法引用";
+    }
+
+    public Employee() {
+    }
 }
