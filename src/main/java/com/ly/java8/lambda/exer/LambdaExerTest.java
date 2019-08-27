@@ -1,7 +1,6 @@
 package com.ly.java8.lambda.exer;
 
 import com.ly.java8.lambda.dto.Employee;
-import net.sourceforge.pinyin4j.PinyinHelper;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -26,7 +25,7 @@ public class LambdaExerTest {
      */
     List<Employee> employeeList = Arrays.asList(
             new Employee(101, "张三", 18, 9999.99),
-            new Employee(102, "张四", 59, 9999.99),
+            new Employee(102, "李四", 59, 6666.66),
             new Employee(103, "王老五", 59, 3333.33),
             new Employee(104, "赵六", 8, 7777.77),
             new Employee(105, "田七", 38, 5555.55)
@@ -52,34 +51,6 @@ public class LambdaExerTest {
             return -Integer.compare(ageOne, ageTwo);
         });
         employeeList.forEach(System.out::println);
-    }
-
-    /**
-     * @return void
-     * @Description: 根据名称首字母排序
-     * @author luoyong
-     * @create 16:27 2019-08-22
-     * @last modify by [luoyong 16:27 2019-08-22 ]
-     */
-    @Test
-    public void testOrderByNameFirstLetter() {
-        Collections.sort(employeeList, (eOne, eTwo) -> getPinYinHeadChar(eOne.getName()).compareTo(getPinYinHeadChar(eTwo.getName())));
-        employeeList.forEach(System.out::println);
-    }
-
-    public static String getPinYinHeadChar(String str) {
-
-        String convert = "";
-        for (int j = 0; j < str.length(); j++) {
-            char word = str.charAt(j);
-            String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(word);
-            if (pinyinArray != null) {
-                convert += pinyinArray[0].charAt(0);
-            } else {
-                convert += word;
-            }
-        }
-        return convert;
     }
 
 
