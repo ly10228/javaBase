@@ -616,7 +616,7 @@
 //
 //    /**
 //     * Constructs an IndexOutOfBoundsException detail message.
-//     * Of the many possible refactorings of the error handling code,
+//     * Of the many possible refactorings of the bad handling code,
 //     * this "outlining" performs best with both server and client VMs.
 //     */
 //    private String outOfBoundsMsg(int index) {
