@@ -1,5 +1,6 @@
 package com.ly.senior.datastructure.stack;
 
+import com.google.common.collect.Lists;
 import com.ly.senior.datastructure.stack.utils.OperatorUtils;
 import org.junit.Test;
 
@@ -33,6 +34,83 @@ public class PolandNotation {
         //2:遍历集合 配合栈完成计算
         Integer result = calculate(suffixExpressionList);
         System.out.printf("suffixExpression=%d", result);
+    }
+
+    /**
+     * @param
+     * @return void
+     * @Description: 测试逆波兰表达式完整版本
+     * @author luoyong
+     * @create 21:38 2019/8/27
+     * @last modify by [LuoYong 21:38 2019/8/27 ]
+     */
+    @Test
+    public void test() {
+        //1:给出表达式
+        String s = "1+((2+3)*4)-5";
+        //2:将中缀表达式转换成List<String>
+        //fixExpressionStringList=[1, +, (, (, 2, +, 3, ), *, 4, ), -, 5]
+        List<String> fixExpressionStringList = toInfixExpressionList(s);
+        System.out.println("fixExpressionStringList=" + fixExpressionStringList);
+        //3:将中缀表达式转换成后缀表达式 1+((2+3)×4)-5  1 2 3 + 4 * + 5 -
+        List<String> suffixExpreesionList = parseSuffixExpreesionList(fixExpressionStringList);
+        System.out.println("suffixExpreesionList=" + suffixExpreesionList);
+        //4:计算结果
+        Integer result = calculate(suffixExpreesionList);
+        System.out.printf("suffixExpression=%d", result);
+    }
+
+
+    /**
+     * @param fixExpressionStringList 中缀表达式集合
+     * @return
+     * @Description: 将中缀表达式转换成后缀表达式
+     * 转换之前 1, +, (, (, 2, +, 3, ), *, 4, ), -, 5
+     * 转换之后 1 2 3 + 4 * + 5 -
+     * @author luoyong
+     * @create 21:42 2019/8/27
+     * @last modify by [LuoYong 21:42 2019/8/27 ]
+     */
+    public List<String> parseSuffixExpreesionList(List<String> fixExpressionStringList) {
+        //1:定一个一个符号栈
+        Stack<String> operStack = new Stack<>();
+        //2:定义一个结果集合
+        List<String> resultStringList = Lists.newArrayList();
+        fixExpressionStringList.forEach(item -> {
+            if (item.matches("\\d+")) {
+                //是数字
+                resultStringList.add(item);
+            } else if (item.equals("(")) {
+                //左括号
+                operStack.push(item);
+            } else if (item.equals(")")) {
+                //遇到右括号 将非"（"元素弹出加入到resultStringList 并将"("元素弹出
+                //operStack.peek() top指针对应的元素(按照上面的案例 第一次 operStack.peek()=3 )
+                while (!operStack.peek().equals("(")) {
+                    resultStringList.add(operStack.pop());
+                }
+                //弹出"("
+                operStack.pop();
+            } else {
+                //当item的优先级小于等于栈顶元素的优先级
+                // 1：将符号栈的栈顶元素弹出并加入到resultStringList当中
+                while (operStack.size() != 0) {
+                    Integer topStatckPriority = OperatorUtils.getPriority(operStack.peek());
+                    Integer itemPriority = OperatorUtils.getPriority(item);
+                    if (itemPriority <= topStatckPriority) {
+                        resultStringList.add(operStack.pop());
+                    } else {
+                        break;
+                    }
+                }
+                operStack.push(item);
+            }
+        });
+        //将运算符栈里面剩余的运算符存放到结当中
+        while (operStack.size() != 0) {
+            resultStringList.add(operStack.pop());
+        }
+        return resultStringList;
     }
 
     /**
@@ -73,5 +151,47 @@ public class PolandNotation {
         return Integer.parseInt(stack.pop());
     }
 
+    /**
+     * @param s
+     * @return
+     * @Description: 将中缀表达式转化成List
+     * s="1+((2+3)×4)-5"
+     * @author luoyong
+     * @create 20:46 2019/8/27
+     * @last modify by [LuoYong 20:46 2019/8/27 ]
+     */
+    public static List<String> toInfixExpressionList(String s) {
+        //定义返回结果
+        List<String> result = Lists.newArrayList();
+        //对多位数的拼接
+        String str;
+        //用来存放遍历到每个字符
+        char c;
+        int i = 0;
+        do {
+            c = s.charAt(i);
+            /**
+             * 48～57为0到9十个阿拉伯数字。
+             * 65～90为26个大写英文字母，97～122号为26个小写英文字母
+             */
+            if (c < 48 || c > 57) {
+                //c是非数字
+                result.add(String.valueOf(c));
+                i++;
+                c = s.charAt(i);
+            } else {
+                str = "";
+                //数字'0'[48]->'9'[57]
+                //多位数
+                while (i < s.length() && (c = s.charAt(i)) >= 48 && (c = s.charAt(i)) <= 57) {
+                    str = str + c;
+                    i++;
+                }
+                result.add(str);
+            }
+        } while (i < s.length());
+
+        return result;
+    }
 
 }
