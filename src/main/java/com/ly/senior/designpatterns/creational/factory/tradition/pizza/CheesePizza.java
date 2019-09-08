@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.creational.factory.simple.pizza;
+package com.ly.senior.designpatterns.creational.factory.tradition.pizza;
 
 /**
  * @author luoyong

@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.creational.factory.simple.order;
+package com.ly.senior.designpatterns.creational.factory.tradition.order;
 
 /**
  * @author luoyong

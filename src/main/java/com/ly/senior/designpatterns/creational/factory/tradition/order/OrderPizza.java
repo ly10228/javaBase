@@ -1,9 +1,9 @@
-package com.ly.senior.designpatterns.creational.factory.simple.order;
+package com.ly.senior.designpatterns.creational.factory.tradition.order;
 
-import com.ly.senior.designpatterns.creational.factory.simple.pizza.CheesePizza;
-import com.ly.senior.designpatterns.creational.factory.simple.pizza.GreekPizza;
-import com.ly.senior.designpatterns.creational.factory.simple.pizza.PepperPizza;
-import com.ly.senior.designpatterns.creational.factory.simple.pizza.Pizza;
+import com.ly.senior.designpatterns.creational.factory.tradition.pizza.CheesePizza;
+import com.ly.senior.designpatterns.creational.factory.tradition.pizza.GreekPizza;
+import com.ly.senior.designpatterns.creational.factory.tradition.pizza.PepperPizza;
+import com.ly.senior.designpatterns.creational.factory.tradition.pizza.Pizza;
 import lombok.Data;
 
 import java.io.BufferedReader;
