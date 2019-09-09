@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.creational.factory.simple;
+package com.ly.senior.designpatterns.creational.factory.simplefactory;
 
 import com.ly.senior.designpatterns.creational.factory.tradition.pizza.CheesePizza;
 import com.ly.senior.designpatterns.creational.factory.tradition.pizza.GreekPizza;

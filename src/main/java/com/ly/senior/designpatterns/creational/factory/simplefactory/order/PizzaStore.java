@@ -1,6 +1,6 @@
-package com.ly.senior.designpatterns.creational.factory.simple.order;
+package com.ly.senior.designpatterns.creational.factory.simplefactory.order;
 
-import com.ly.senior.designpatterns.creational.factory.simple.SimpleFactory;
+import com.ly.senior.designpatterns.creational.factory.simplefactory.SimpleFactory;
 
 /**
  * @author luoyong
