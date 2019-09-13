@@ -27,7 +27,7 @@ public class DeepCloneableTarget implements Serializable, Cloneable {
 
     /**
      * @return java.lang.Object
-     * @Description: 因为该类的属性，都是String , 因此我们这里使用默认的clone完成即可
+     * @Description: 因为该类的属性，都是String ,都是基本引用类型  因此我们这里使用默认的clone完成即可
      * @author luoyong
      * @create 14:33 2019-09-10
      * @last modify by [luoyong 14:33 2019-09-10 ]
