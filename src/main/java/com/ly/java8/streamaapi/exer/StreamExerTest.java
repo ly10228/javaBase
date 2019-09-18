@@ -1,12 +1,15 @@
 package com.ly.java8.streamaapi.exer;
 
+import com.google.common.collect.Lists;
 import com.ly.java8.streamaapi.dto.StreamEmployee;
 import com.ly.java8.streamaapi.enm.StatusEnm;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author luoyong
@@ -50,9 +53,32 @@ public class StreamExerTest {
             new StreamEmployee(102, "李四", 59, 6666.66, StatusEnm.BUSY),
             new StreamEmployee(101, "张三", 18, 9999.99, StatusEnm.FREE),
             new StreamEmployee(103, "王五", 28, 3333.33, StatusEnm.VOCATION),
-            new StreamEmployee(104, "赵六", 8, 7777.77, StatusEnm.BUSY),
+            new StreamEmployee(104, "赵六", 7, 7777.77, StatusEnm.BUSY),
             new StreamEmployee(104, "赵六", 8, 7777.77, StatusEnm.FREE),
-            new StreamEmployee(104, "赵六", 8, 7777.77, StatusEnm.FREE),
+            new StreamEmployee(104, "赵六", 9, 7777.77, StatusEnm.FREE),
             new StreamEmployee(105, "田七", 38, 5555.55, StatusEnm.BUSY)
     );
+
+
+    /**
+     * @return void
+     * @Description: 集合转换成map key重复 value合并
+     * @author luoyong
+     * @create 21:13 2019-09-18
+     * @last modify by [luoyong 21:13 2019-09-18 ]
+     */
+    @Test
+    public void testMapKeyepeatValueMerge() {
+        Map<Integer, List<Integer>> map =
+                employeeList.stream().collect(Collectors.toMap(key -> key.getId(),
+                        value -> Lists.newArrayList(value.getAge()), (List<Integer> newValueList,
+                                                                      List<Integer> oldValueList) -> {
+                            oldValueList.addAll(newValueList);
+                            return oldValueList;
+
+                        }));
+
+        System.out.println(map);
+    }
+
 }
