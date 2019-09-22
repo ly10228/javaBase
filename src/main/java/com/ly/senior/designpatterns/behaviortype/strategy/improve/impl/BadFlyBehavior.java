@@ -1,6 +1,6 @@
-package com.ly.senior.designpatterns.strategy.improve.impl;
+package com.ly.senior.designpatterns.behaviortype.strategy.improve.impl;
 
-import com.ly.senior.designpatterns.strategy.improve.FlyBehavior;
+import com.ly.senior.designpatterns.behaviortype.strategy.improve.FlyBehavior;
 
 /**
  * @author luoyong

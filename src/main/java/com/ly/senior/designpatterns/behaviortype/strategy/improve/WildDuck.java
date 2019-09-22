@@ -1,7 +1,7 @@
-package com.ly.senior.designpatterns.strategy.improve;
+package com.ly.senior.designpatterns.behaviortype.strategy.improve;
 
-import com.ly.senior.designpatterns.strategy.improve.impl.GeGeQuackBehavior;
-import com.ly.senior.designpatterns.strategy.improve.impl.GoodFlyBehavior;
+import com.ly.senior.designpatterns.behaviortype.strategy.improve.impl.GeGeQuackBehavior;
+import com.ly.senior.designpatterns.behaviortype.strategy.improve.impl.GoodFlyBehavior;
 
 /**
  * @author luoyong

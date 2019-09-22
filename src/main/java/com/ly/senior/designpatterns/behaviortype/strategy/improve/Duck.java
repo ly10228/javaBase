@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.strategy.improve;
+package com.ly.senior.designpatterns.behaviortype.strategy.improve;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.strategy;
+package com.ly.senior.designpatterns.behaviortype.strategy;
 
 import org.junit.Test;
 

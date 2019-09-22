@@ -1,6 +1,6 @@
-package com.ly.senior.designpatterns.strategy.improve.impl;
+package com.ly.senior.designpatterns.behaviortype.strategy.improve.impl;
 
-import com.ly.senior.designpatterns.strategy.improve.QuackBehavior;
+import com.ly.senior.designpatterns.behaviortype.strategy.improve.QuackBehavior;
 
 /**
  * @author luoyong

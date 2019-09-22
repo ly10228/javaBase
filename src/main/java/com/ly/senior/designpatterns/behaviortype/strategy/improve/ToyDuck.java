@@ -1,7 +1,7 @@
-package com.ly.senior.designpatterns.strategy.improve;
+package com.ly.senior.designpatterns.behaviortype.strategy.improve;
 
-import com.ly.senior.designpatterns.strategy.improve.impl.NoFlyBehavior;
-import com.ly.senior.designpatterns.strategy.improve.impl.NoQuackBehavior;
+import com.ly.senior.designpatterns.behaviortype.strategy.improve.impl.NoFlyBehavior;
+import com.ly.senior.designpatterns.behaviortype.strategy.improve.impl.NoQuackBehavior;
 
 /**
  * @author luoyong
