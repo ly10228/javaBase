@@ -1,4 +1,4 @@
-package com.ly.base.opp.fielduse;
+package com.ly.base.opp.classstructure.fielduse;
 
 import org.junit.Test;
 

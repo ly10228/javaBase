@@ -1,4 +1,4 @@
-package com.ly.base.opp.methoduse;
+package com.ly.base.opp.classstructure.methoduser;
 
 /**
  * @author luoyong
