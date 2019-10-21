@@ -1,5 +1,6 @@
 package com.ly.java8.streamaapi.exer;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.ly.java8.streamaapi.dto.StreamEmployee;
 import com.ly.java8.streamaapi.enm.StatusEnm;
@@ -9,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -79,6 +82,27 @@ public class StreamExerTest {
                         }));
 
         System.out.println(map);
+    }
+
+
+    /**
+     * @return void
+     * @Description: 集合去重
+     * @author luoyong
+     * @create 11:00 2019-10-21
+     * @last modify by [luoyong 11:00 2019-10-21 ]
+     */
+    @Test
+    public void dataDeduplication() {
+        List<StreamEmployee> deduplicationEmployeeList =
+                employeeList.stream().filter(distinctByKey(StreamEmployee::getId)).collect(Collectors.toList());
+        System.out.println(deduplicationEmployeeList.size());
+        System.out.println(deduplicationEmployeeList);
+    }
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return object -> seen.putIfAbsent(keyExtractor.apply(object), Boolean.TRUE) == null;
     }
 
 }
