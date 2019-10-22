@@ -4,6 +4,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.ly.java8.streamaapi.dto.StreamEmployee;
 import com.ly.java8.streamaapi.enm.StatusEnm;
+import com.ly.java8.streamaapi.exer.dto.ContractOwnerInfoDTO;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -105,4 +106,28 @@ public class StreamExerTest {
         return object -> seen.putIfAbsent(keyExtractor.apply(object), Boolean.TRUE) == null;
     }
 
+
+    /**
+     * @return void
+     * @Description: 集合当中重复元素合并
+     * @author luoyong
+     * @create 14:48 2019-10-22
+     * @last modify by [luoyong 14:48 2019-10-22 ]
+     */
+    @Test
+    public void keyDupValueAdd() {
+        List<ContractOwnerInfoDTO> deduplicationOwnerList = Lists.newArrayList();
+
+        contractOwnerInfoDTOList.parallelStream().collect(Collectors.groupingBy(o -> o.getCustId(),
+                Collectors.toList())).forEach((id, transfer) -> {
+            transfer.stream().reduce((a, b) -> new ContractOwnerInfoDTO(a.getName(), a.getCustId(),
+                    String.valueOf(Integer.valueOf(a.getPercentage()) + Integer.valueOf(b.getPercentage())))).ifPresent(deduplicationOwnerList::add);
+        });
+        System.out.println(deduplicationOwnerList);
+    }
+
+    List<ContractOwnerInfoDTO> contractOwnerInfoDTOList = Arrays.asList(
+            new ContractOwnerInfoDTO("张三", 1001L, "20"),
+            new ContractOwnerInfoDTO("张三", 1001L, "40"),
+            new ContractOwnerInfoDTO("李四", 1002L, "40"));
 }
