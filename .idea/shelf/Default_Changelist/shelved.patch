@@ -1,0 +1,19 @@
+Index: src/main/java/com/ly/java8/lambda/LambdaTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ly/java8/lambda/LambdaTest.java	(date 1565764058000)
++++ src/main/java/com/ly/java8/lambda/LambdaTest.java	(date 1565764058000)
+@@ -0,0 +1,11 @@
++package com.ly.java8.lambda;
++
++/**
++ * @author luoyong
++ *  * @create 2019-08-14 14:26
++ *  * @last modify by [luoyong 2019-08-14 14:26]
++ * @Description: TODO
++ **/
++public class LambdaTest {
++
++}
