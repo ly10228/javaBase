@@ -14,11 +14,12 @@ public class Client {
     public void test() {
         //要被代理的目标对象 TeacherDao
         ITeacherDao target = new TeacherDao();
+        System.out.println(target.getClass());
 
         //生成代理对象
         ITeacherDao proxyInstance = (ITeacherDao) new ProxyFactory(target).getProxyInstance();
 
-        // proxyInstance=class com.sun.proxy.$Proxy0 内存中动态生成了代理对象
+        // proxyInstance=class com.sun.proxy.$Proxy0 内存中动态生成了代理对象 代理对象标识：$
         System.out.println("proxyInstance=" + proxyInstance.getClass());
 
         proxyInstance.teach();

@@ -1,0 +1,36 @@
+package com.ly.base.opp.javabean;
+
+/**
+ * @author luoyong
+ * @Description: JavaBean是一种Java语言写成的可重用组件。
+ * 所谓JavaBean，是指符合如下标准的Java类：
+ * >类是公共的
+ * >有一个无参的公共的构造器
+ * >有属性，且有对应的get、set方法
+ * @create 2019-10-13 17:47
+ * @last modify by [LuoYong 2019-10-13 17:47]
+ **/
+public class Customer {
+    private int id;
+    private String name;
+
+    public Customer() {
+
+    }
+
+    public void setId(int i) {
+        id = i;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setName(String n) {
+        name = n;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
