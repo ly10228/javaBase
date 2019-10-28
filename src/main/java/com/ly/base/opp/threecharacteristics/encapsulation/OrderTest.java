@@ -1,4 +1,4 @@
-package com.ly.base.opp.encapsulation;
+package com.ly.base.opp.threecharacteristics.encapsulation;
 
 import org.junit.Test;
 
