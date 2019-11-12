@@ -98,6 +98,14 @@ class Chinese {
         System.out.println("nation : " + nation);
     }
 
+    /**
+     * @param
+     * @return void
+     * @Description: 这个方法随着类的加载而加载
+     * @author luoyong
+     * @create 22:54 2019/11/12
+     * @last modify by [LuoYong 22:54 2019/11/12 ]
+     */
     public static void show() {
         System.out.println("我是一个中国人！");
         //不能调用非静态的结构
