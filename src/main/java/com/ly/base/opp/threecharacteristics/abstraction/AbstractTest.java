@@ -58,23 +58,22 @@ abstract class Person extends Creature{
     public void walk(){
         System.out.println("人走路");
     }
+}
 
-    class Student extends Person{
+class Student extends Person{
 
-        public Student(String name,int age){
-            super(name,age);
-        }
-        public Student(){
-        }
-
-        public void eat(){
-            System.out.println("学生多吃有营养的食物");
-        }
-
-        @Override
-        public void breath() {
-            System.out.println("学生应该呼吸新鲜的没有雾霾的空气");
-        }
+    public Student(String name,int age){
+        super(name,age);
+    }
+    public Student(){
     }
 
+    public void eat(){
+        System.out.println("学生多吃有营养的食物");
+    }
+
+    @Override
+    public void breath() {
+        System.out.println("学生应该呼吸新鲜的没有雾霾的空气");
+    }
 }
