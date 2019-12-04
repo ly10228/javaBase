@@ -50,12 +50,15 @@ public class ClassLoaderTest {
     public void testReadConfigurationFile() throws Exception {
         Properties properties = new Properties();
         //读取配置文件的方式一：
+        //此时的文件默认在当前的module下。
         FileInputStream fis = new FileInputStream("src/main/java/com/ly/base/reflect/jdbc.properties");
         properties.load(fis);
         String user = properties.getProperty("user");
         String password = properties.getProperty("password");
         System.out.println("user = " + user + ",password = " + password);
 
+        //读取配置文件的方式二：使用ClassLoader
+        //配置文件默认识别为：当前module的src下
         Properties properties1 = new Properties();
         ClassLoader classLoader = ClassLoaderTest.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("jdbc1.properties");
