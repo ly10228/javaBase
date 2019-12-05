@@ -6,12 +6,16 @@ package com.ly.base.reflect.exer;
  * @create 2019-12-05 23:17
  * @last modify by [LuoYong 2019-12-05 23:17]
  **/
+@MyAnnotation(value="hi")
 public class Person extends Creature<String> implements MyInterface,Comparable<String> {
 
+    @MyAnnotation("name")
     private String name;
 
+    @MyAnnotation("age")
     int age;
 
+    @MyAnnotation("id")
     public int id;
 
     public Person() {

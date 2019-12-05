@@ -2,6 +2,7 @@ package com.ly.base.reflect.exer;
 
 import org.junit.Test;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
@@ -63,6 +64,9 @@ public class FieldTest {
             String fieldName = field.getName();
             System.out.println(fieldName);
 
+            //属性上面的注解
+            Annotation[] annotations = field.getAnnotations();
+            System.out.println("注解是:" + Arrays.toString(annotations));
             System.out.println();
         }
     }
