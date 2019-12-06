@@ -6,8 +6,8 @@ package com.ly.base.reflect.exer;
  * @create 2019-12-05 23:17
  * @last modify by [LuoYong 2019-12-05 23:17]
  **/
-@MyAnnotation(value="hi")
-public class Person extends Creature<String> implements MyInterface,Comparable<String> {
+@MyAnnotation(value = "hi")
+public class Person extends Creature<String> implements MyInterface, Comparable<String> {
 
     @MyAnnotation("name")
     private String name;
@@ -32,6 +32,7 @@ public class Person extends Creature<String> implements MyInterface,Comparable<S
     }
 
     @MyAnnotation
+    @MethodAnnotation(methodName = "show")
     private String show(String nation) {
         System.out.println("我的国籍是:" + nation);
         return nation;
@@ -52,7 +53,7 @@ public class Person extends Creature<String> implements MyInterface,Comparable<S
     }
 
 
-    private static void showDesc(){
+    private static void showDesc() {
         System.out.println("我是一个可爱的人");
     }
 
