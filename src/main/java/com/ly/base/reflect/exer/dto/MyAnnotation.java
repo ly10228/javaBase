@@ -1,10 +1,10 @@
-package com.ly.base.reflect.exer;
+package com.ly.base.reflect.exer.dto;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.*;
 
 /**
  * @author luoyong
@@ -12,8 +12,8 @@ import static java.lang.annotation.ElementType.METHOD;
  * @create 2019-12-05 23:12
  * @last modify by [LuoYong 2019-12-05 23:12]
  **/
-@Target({METHOD})
+@Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MethodAnnotation {
-    String methodName() default "我是一个方法";
+public @interface MyAnnotation {
+    String value() default "hello我是默认值";
 }
