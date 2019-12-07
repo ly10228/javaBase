@@ -1,4 +1,4 @@
-package com.ly.base.reflect.exer;
+package com.ly.base.reflect.exer.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,10 +1,13 @@
 package com.ly.base.reflect.exer;
 
+import com.ly.base.reflect.exer.dto.MethodAnnotation;
+import com.ly.base.reflect.exer.dto.Person;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -53,15 +56,64 @@ public class MethodTest {
         System.out.println(Arrays.toString(declaredMethods));
 
         for (Method method : declaredMethods) {
+            System.out.println("方法是:" + method);
             //1:获取方法上面的注解
             Annotation[] annotations = method.getAnnotations();
             Arrays.stream(annotations).forEach(item -> System.out.println(item));
 
             //获取指定的注解
-            Optional<MethodAnnotation> methodAnnotation = getMethodAnnotation(method);
-            if (!methodAnnotation.isPresent()) {
+            Optional<MethodAnnotation> methodAnnotationOptional = getMethodAnnotation(method);
+            if (methodAnnotationOptional.isPresent()) {
+                System.out.println("方法有注解");
                 //存在值
-                System.out.println(methodAnnotation);
+                System.out.println(methodAnnotationOptional);
+                MethodAnnotation methodAnnotation = methodAnnotationOptional.get();
+                System.out.println(methodAnnotation.methodName());
+
+            } else {
+                System.out.println("方法上无注解");
+            }
+            //2:获取权限修饰符
+            int modifiers = method.getModifiers();
+            System.out.println("方法的权限修饰符是:" + Modifier.toString(modifiers));
+
+
+            //3:获取返回值类型
+            Class returnType = method.getReturnType();
+            System.out.println("方法的返回值类型是:" + returnType.getName());
+
+            System.out.println();
+            //4:获取方法名
+            String name = method.getName();
+            System.out.print("方法名称是:" + name);
+            System.out.print("(");
+            //5:形参列表
+            Class<?>[] parameterTypes = method.getParameterTypes();
+            if (parameterTypes != null && parameterTypes.length > 0) {
+                for (int i = 0; i < parameterTypes.length; i++) {
+                    if (i == parameterTypes.length - 1) {
+                        //参数数组最后的一个元素
+                        System.out.print(parameterTypes[i].getName() + " args_" + i);
+                        break;
+                    }
+                    System.out.print(parameterTypes[i].getName() + " args_" + i + ",");
+                }
+            }
+            System.out.print(")");
+
+            System.out.println();
+            //6:抛出的异常
+            Class<?>[] exceptionTypes = method.getExceptionTypes();
+            if (exceptionTypes.length > 0) {
+                System.out.print("throws ");
+                for (int i = 0; i < exceptionTypes.length; i++) {
+                    if (i == exceptionTypes.length - 1) {
+                        //数组最后一个元素
+                        System.out.print(exceptionTypes[i].getName());
+                        break;
+                    }
+                    System.out.print(exceptionTypes[i].getName() + ",");
+                }
             }
 
             System.out.println();
