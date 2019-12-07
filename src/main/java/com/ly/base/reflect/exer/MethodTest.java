@@ -30,13 +30,14 @@ public class MethodTest {
     @Test
     public void listAllMethod() {
         Class<Person> personClass = Person.class;
-        //获取运行时类和父类权限修饰符为public的方法
+        //获取运行时类及其所有父类权限修饰符为public的方法
         Method[] methods = personClass.getMethods();
-        System.out.println(Arrays.toString(methods));
+        Arrays.stream(methods).forEach(System.out::println);
 
-        //获取当前运行时类声明所有的方法
+        //获取当前运行时类声明所有的方法-->不包含父类当中申请的
+        System.out.println("获取当前运行时类声明所有的方法-->不包含父类当中申请的");
         Field[] declaredFields = personClass.getDeclaredFields();
-        System.out.println(Arrays.toString(declaredFields));
+        Arrays.stream(declaredFields).forEach(System.out::println);
     }
 
     /**
@@ -88,6 +89,7 @@ public class MethodTest {
             System.out.print("方法名称是:" + name);
             System.out.print("(");
             //5:形参列表
+
             Class<?>[] parameterTypes = method.getParameterTypes();
             if (parameterTypes != null && parameterTypes.length > 0) {
                 for (int i = 0; i < parameterTypes.length; i++) {

@@ -76,7 +76,8 @@ public class ReflectionTest {
         if (showDescOptional.isPresent()) {
             Method showDesc = showDescOptional.get();
             showDesc.setAccessible(true);
-            Object returnVal = showDesc.invoke(person);
+            //Object returnVal = showDesc.invoke(null);
+            Object returnVal = showDesc.invoke(Person.class);
             System.out.println(returnVal);
         }
 
