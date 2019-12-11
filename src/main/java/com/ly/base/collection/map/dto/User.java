@@ -1,4 +1,4 @@
-package com.ly.map.dto;
+package com.ly.base.collection.map.dto;
 
 import lombok.Data;
 

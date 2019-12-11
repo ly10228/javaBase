@@ -1,6 +1,6 @@
-package com.ly.map;
+package com.ly.base.collection.map;
 
-import com.ly.map.dto.User;
+import com.ly.base.collection.map.dto.User;
 import org.junit.Test;
 
 import java.util.*;

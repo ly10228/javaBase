@@ -1,4 +1,4 @@
-package com.ly.map;
+package com.ly.base.collection.map;
 
 import com.google.common.collect.Maps;
 import org.junit.Test;

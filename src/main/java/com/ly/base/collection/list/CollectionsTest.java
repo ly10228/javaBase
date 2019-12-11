@@ -1,4 +1,4 @@
-package com.ly.collection;
+package com.ly.base.collection.list;
 
 import org.junit.Test;
 

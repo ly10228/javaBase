@@ -1,6 +1,6 @@
-package com.ly.base.collection;
+package com.ly.base.collection.list;
 
-import com.ly.base.collection.dto.Person;
+import com.ly.base.collection.list.dto.Person;
 import org.junit.Test;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package com.ly.collection.dto;
+package com.ly.base.collection.list.dto;
 
 /**
  * @author luoyong

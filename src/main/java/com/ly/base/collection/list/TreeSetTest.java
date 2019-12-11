@@ -1,6 +1,6 @@
-package com.ly.collection;
+package com.ly.base.collection.list;
 
-import com.ly.collection.dto.UserDTO;
+import com.ly.base.collection.list.dto.UserDTO;
 import org.junit.Test;
 
 import java.util.Comparator;

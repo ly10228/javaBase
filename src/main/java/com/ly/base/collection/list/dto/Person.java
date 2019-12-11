@@ -1,4 +1,4 @@
-package com.ly.base.collection.dto;
+package com.ly.base.collection.list.dto;
 
 import lombok.Getter;
 import lombok.Setter;

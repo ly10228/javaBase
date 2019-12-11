@@ -23,7 +23,7 @@
 // *
 // */
 //
-//package com.ly.map.hashmapsource;
+//package com.ly.base.collection.map.hashmapsource;
 //import java.io.*;
 //import java.util.*;
 //

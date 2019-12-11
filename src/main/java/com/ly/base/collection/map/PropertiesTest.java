@@ -1,4 +1,4 @@
-package com.ly.map;
+package com.ly.base.collection.map;
 
 import java.io.FileInputStream;
 import java.io.IOException;
