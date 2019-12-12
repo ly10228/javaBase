@@ -1,4 +1,4 @@
-package com.ly.generic;
+package com.ly.base.generic;
 
 import org.junit.Test;
 
