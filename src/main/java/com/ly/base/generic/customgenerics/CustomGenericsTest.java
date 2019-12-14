@@ -1,5 +1,6 @@
 package com.ly.base.generic.customgenerics;
 
+import com.google.common.collect.Lists;
 import com.ly.base.generic.customgenerics.dto.Order;
 import com.ly.base.generic.customgenerics.dto.Person;
 import com.ly.base.generic.customgenerics.dto.SubOrder;
@@ -51,18 +52,19 @@ public class CustomGenericsTest {
     @Test
     public void test3() {
         ArrayList<String> stringArrayList = null;
-        ArrayList<Integer> intArrayList = null;
+        ArrayList<Integer> intArrayList = Lists.newArrayList();
 //        System.out.println(stringArrayList == intArrayList);
-
+        //泛型不同的引用不能相互赋值
+//        stringArrayList = intArrayList;
         Person p1 = null;
         Person p2 = null;
         p1 = p2;
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         Order<String> order = new Order<>();
-        Integer[] arr = new Integer[]{1,2,3,4};
+        Integer[] arr = new Integer[]{1, 2, 3, 4};
         //泛型方法在调用时，指明泛型参数的类型。
         List<Integer> list = order.copyFromArrayToList(arr);
 
