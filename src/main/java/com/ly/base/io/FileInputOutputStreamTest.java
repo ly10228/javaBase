@@ -123,9 +123,10 @@ public class FileInputOutputStreamTest {
         long startTime = System.currentTimeMillis();
         String srcPath = "/Users/luoyong/java/video/01.avi";
         String destPath = "/Users/luoyong/java/doc/test/02.avi";
-        copyFile(srcPath,destPath);
+        copyFile(srcPath, destPath);
         long endTime = System.currentTimeMillis();
-        System.out.println("复制时间为:"+(endTime-startTime)+"ms");
+        //499ms
+        System.out.println("复制时间为:" + (endTime - startTime) + "ms");
     }
 
     /**
