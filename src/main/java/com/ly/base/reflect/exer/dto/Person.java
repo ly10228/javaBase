@@ -1,10 +1,5 @@
 package com.ly.base.reflect.exer.dto;
 
-import com.ly.base.reflect.exer.dto.Creature;
-import com.ly.base.reflect.exer.dto.MethodAnnotation;
-import com.ly.base.reflect.exer.dto.MyAnnotation;
-import com.ly.base.reflect.exer.dto.MyInterface;
-
 /**
  * @author luoyong
  * @Description: Person
