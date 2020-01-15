@@ -1,5 +1,7 @@
 package com.ly.base.thread.create.exer;
 
+import com.ly.utils.MathUtils;
+
 /**
  * @author luoyong
  * @Description: ThreadDemo
@@ -18,24 +20,16 @@ public class ThreadDemo {
         new Thread() {
             @Override
             public void run() {
-                for (int i = 1; i < 100; i++) {
-                    if (i % 2 == 0) {
-                        //输出偶数
-                        System.out.println(Thread.currentThread().getName() + ":" + i);
-                    }
-                }
+                //输出100以内的偶数
+                MathUtils.printEven();
             }
         }.start();
 
         new Thread() {
             @Override
             public void run() {
-                for (int i = 1; i < 100; i++) {
-                    if (i % 2 != 0) {
-                        //输出奇数
-                        System.out.println(Thread.currentThread().getName() + ":" + i);
-                    }
-                }
+                //数据100以内的奇数
+                MathUtils.printOddNumber();
             }
         }.start();
     }
@@ -44,12 +38,8 @@ public class ThreadDemo {
 class TraversingEvenNum extends Thread {
     @Override
     public void run() {
-        for (int i = 1; i < 100; i++) {
-            if (i % 2 == 0) {
-                //输出偶数
-                System.out.println(Thread.currentThread().getName() + ":" + i);
-            }
-        }
+        //输出100以内的偶数
+        MathUtils.printEven();
     }
 }
 
@@ -57,11 +47,7 @@ class TraversingEvenNum extends Thread {
 class ErgodicOddNum extends Thread {
     @Override
     public void run() {
-        for (int i = 1; i < 100; i++) {
-            if (i % 2 != 0) {
-                //输出奇数
-                System.out.println(Thread.currentThread().getName() + ":" + i);
-            }
-        }
+        //数据100以内的奇数
+        MathUtils.printOddNumber();
     }
 }
