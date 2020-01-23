@@ -1,4 +1,4 @@
-package com.ly.senior.datastructure;
+package com.ly.senior.datastructure.array;
 
 import org.junit.Test;
 
@@ -6,6 +6,14 @@ import org.junit.Test;
 /**
  * @author luoyong
  * @Description: SparseArray 稀疏数组
+ * 思路
+ * 二维数组转稀疏数组
+ *   1 遍历 原始的二维数组 得到有效数据的个数sum
+ *   2 根据sum就可以创建稀疏数组sparseArr int[sum+1][3]
+ *   3 将二维数据有效数据存入到稀疏数组
+ * 稀疏数组转二维数组
+ *   1 读取稀疏数组的第一行 ，根据第一行数据 创建原始的二维数组
+ *   2 再读取稀疏数组后几行的数据，并赋值给原始的二维数组
  * @create 2019-07-13 16:59
  * @last modify by [LuoYong 2019-07-13 16:59]
  **/
