@@ -1,6 +1,10 @@
 package com.ly.base.commonclasses.string;
 
+import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Maps;
 import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * @author luoyong
@@ -160,4 +164,25 @@ public class StringTest {
         //mbc
         System.out.println(s5);
     }
+
+    @Test
+    public void testReplace() {
+        Map<String, String> stringMap = Maps.newHashMap();
+        stringMap.put("jobCallbackUrl", "http://xman-baseline-activity-rules.test.za-tech.net/mail/sendMail");
+        String url = stringMap.get("jobCallbackUrl");
+        if (url.startsWith("http://")) {
+            url = url.replace("http://", "");
+        }
+        System.out.println(url);
+    }
+
+    @Test
+    public void testDtoToJson() {
+        Person person = new Person();
+        person.setAge(1);
+        person.setName("张三");
+        Object o = JSON.toJSON(person);
+        System.out.println(JSON.toJSONString(person));
+    }
+
 }

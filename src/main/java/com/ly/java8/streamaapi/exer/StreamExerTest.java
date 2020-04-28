@@ -130,4 +130,11 @@ public class StreamExerTest {
             new ContractOwnerInfoDTO("张三", 1001L, "20"),
             new ContractOwnerInfoDTO("张三", 1001L, "40"),
             new ContractOwnerInfoDTO("李四", 1002L, "40"));
+
+    @Test
+    public void testSplit() {
+        String key = 123 + "_" + 456;
+        String[] s = key.split("_");
+
+    }
 }
