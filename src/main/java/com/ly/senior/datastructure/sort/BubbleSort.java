@@ -85,7 +85,7 @@ public class BubbleSort {
      */
     @Test
     public void testAfterOptimization() {
-        int[] array = new int[]{3, 9, -1, 10, 20};
+        int[] array = new int[]{3, 9, -1, 10, 2};
         int temp = 0;
         //是否进行交换标识
         boolean exchangeFlag = false;
