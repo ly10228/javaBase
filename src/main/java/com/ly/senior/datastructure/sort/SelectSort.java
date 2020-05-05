@@ -106,7 +106,7 @@ public class SelectSort {
         String date1Str = simpleDateFormat.format(data1);
         System.out.println("排序前的时间是=" + date1Str);
 
-        //测试冒泡排序
+        //测试选择排序
         selectSort(arr);
 
         Date data2 = new Date();
@@ -134,10 +134,12 @@ public class SelectSort {
      * @last modify by [LuoYong 4:18 下午 2020/5/5 ]
      */
     private void selectSort(int arr[]) {
+        int minIndex = 0;
+        int min = 0;
         for (int i = 0; i < arr.length; i++) {
             //先假定最小值
-            int minIndex = i;
-            int min = arr[i];
+            minIndex = i;
+            min = arr[i];
             for (int j = 1 + i; j < arr.length; j++) {
                 if (min > arr[j]) {
                     //min不是最小值 重新设置最小值和最小值下标
