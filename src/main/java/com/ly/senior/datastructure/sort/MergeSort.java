@@ -1,5 +1,11 @@
 package com.ly.senior.datastructure.sort;
 
+import org.junit.Test;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+
 /**
  * @author luoyong
  *  * @create 2020-05-20 9:39 下午
@@ -7,6 +13,79 @@ package com.ly.senior.datastructure.sort;
  * @Description: 归并排序
  **/
 public class MergeSort {
+
+    /**
+     * @return void
+     * @Description: 测试归并排序速度
+     * @author luoyong
+     * @create 8:45 下午 2020/5/25
+     * @last modify by [LuoYong 8:45 下午 2020/5/25 ]
+     */
+    @Test
+    public void testMergeSortSpeed() {
+        int arr[] = new int[80000];
+        //数组赋值
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) Math.random() * 8000000;
+        }
+        //测试速度
+        System.out.println("排序前");
+        Date data1 = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date1Str = simpleDateFormat.format(data1);
+        System.out.println("排序前的时间是=" + date1Str);
+
+        //归并排序需要一个额外空间
+        int temp[] = new int[arr.length];
+        mergeSort(arr, 0, arr.length - 1, temp);
+
+        Date data2 = new Date();
+        String date2Str = simpleDateFormat.format(data2);
+        System.out.println("排序前的时间是=" + date2Str);
+    }
+
+    /**
+     * @return void
+     * @Description: 测试归并排序
+     * @author luoyong
+     * @create 8:50 下午 2020/5/25
+     * @last modify by [LuoYong 8:50 下午 2020/5/25 ]
+     */
+    @Test
+    public void testMergeSort() {
+        int arr[] = {8, 4, 5, 7, 1, 3, 6, 2};
+        System.out.println("排序前");
+        System.out.println(Arrays.toString(arr));
+        //归并排序需要一个额外空间
+        int temp[] = new int[arr.length];
+        mergeSort(arr, 0, arr.length - 1, temp);
+        System.out.println("排序后");
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /**
+     * @param arr
+     * @param left
+     * @param right
+     * @param temp
+     * @return void
+     * @Description: 分+合方法
+     * @author luoyong
+     * @create 8:40 下午 2020/5/25
+     * @last modify by [LuoYong 8:40 下午 2020/5/25 ]
+     */
+    private void mergeSort(int[] arr, int left, int right, int[] temp) {
+        if (left < right) {
+            //中间索引
+            int mid = (left + right) / 2;
+            //向左递归
+            mergeSort(arr, left, mid, temp);
+            //向右递归
+            mergeSort(arr, mid + 1, right, temp);
+            merge(arr, left, mid, right, temp);
+        }
+    }
+
 
     /**
      * @param arr   排序的原始数组
