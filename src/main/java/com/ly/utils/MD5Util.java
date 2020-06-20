@@ -1,8 +1,12 @@
 package com.ly.utils;
 
 
+import com.google.common.collect.Lists;
+import org.junit.Test;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * @author sangxiaodong
@@ -34,13 +38,27 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        String appKey = "zhongan_zhs_saas";
-        String appSecret = "saas_app_secret";
+        String appKey = "gdym_zhs";
+        String appSecret = "gdym_secret";
+
+//        String appKey = "zhongan_zhs_saas";
+//        String appSecret = "saas_app_secret";
         long current = System.currentTimeMillis();
         System.out.println(current);
         String sign = appSecret + current;
         System.out.println(getMd5(sign));
 
+    }
+
+    @Test
+    public void test() {
+        List<String> phoneList = Lists.newArrayList();
+        phoneList.add("18621043035");
+        phoneList.add("18621043035");
+        phoneList.add("13723123035");
+
+        List<String> newAddStringList = CommonUtils.getDuplicateElements(phoneList);
+        newAddStringList.stream().forEach(System.out::println);
     }
 
 }
