@@ -1,5 +1,7 @@
 package com.ly.senior.datastructure.tree.binarytree;
 
+import com.ly.senior.datastructure.tree.common.HeroNode;
+
 /**
  * @author luoyong
  * @Description: BinaryTree

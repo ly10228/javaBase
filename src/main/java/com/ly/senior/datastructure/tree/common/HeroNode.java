@@ -1,4 +1,4 @@
-package com.ly.senior.datastructure.tree.binarytree;
+package com.ly.senior.datastructure.tree.common;
 
 import lombok.Data;
 
@@ -22,9 +22,24 @@ public class HeroNode {
      */
     private HeroNode right;
 
+    /**
+     * 1. 如果leftType == 0 表示指向的是左子树, 如果 1 则表示指向前驱结点
+     * 2. 如果rightType == 0 表示指向是右子树, 如果 1表示指向后继结点
+     */
+    private int leftType;
+    private int rightType;
+
     public HeroNode(int no, String name) {
         this.no = no;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "HeroNode{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     /**
