@@ -27,6 +27,102 @@ public class HeroNode {
         this.name = name;
     }
 
+    /**
+     * @param no 节点编号
+     * @return
+     * @Description: 前序遍历查找指定no对应的节点
+     * @author luoyong
+     * @create 10:19 2020/6/21
+     * @last modify by [LuoYong 10:19 2020/6/21 ]
+     */
+    public HeroNode preOrderSearch(int no) {
+        System.out.println("进入前序遍历");
+        //父节点 比较当前结点是不是
+        if (this.getNo() == no) {
+            return this;
+        }
+        HeroNode resNode = null;
+        //左子树遍历
+        //判断当前节点的左节点是否为空 如果不为空 则递归前序查找
+        //如果左递归前序查找，找到节点，则返回
+        if (this.left != null) {
+            resNode = this.left.preOrderSearch(no);
+        }
+        if (null != resNode) {
+            //左子树找到了
+            return resNode;
+        }
+        //右子树遍历
+        //当前的结点的右子节点是否为空，如果不空，则继续向右递归前序查找
+        if (this.right != null) {
+            resNode = this.right.preOrderSearch(no);
+        }
+        return resNode;
+    }
+
+    /**
+     * @param no 要查找的no
+     * @return
+     * @Description: 中序遍历查找指定no对应的节点
+     * @author luoyong
+     * @create 10:23 2020/6/21
+     * @last modify by [LuoYong 10:23 2020/6/21 ]
+     */
+    public HeroNode infixOrderSearch(int no) {
+
+        HeroNode resNode = null;
+        //左子树遍历
+        if (this.left != null) {
+            resNode = this.left.infixOrderSearch(no);
+        }
+        if (null != resNode) {
+            return resNode;
+        }
+        System.out.println("进入中序遍历");
+        //父节点
+        if (this.getNo() == no) {
+            return this;
+        }
+
+        //右子树遍历
+        if (this.right != null) {
+            resNode = this.right.infixOrderSearch(no);
+        }
+        return resNode;
+    }
+
+
+    /**
+     * @param no 要查找的no
+     * @return
+     * @Description: 后序遍历查找指定no对应的节点
+     * @author luoyong
+     * @create 10:24 2020/6/21
+     * @last modify by [LuoYong 10:24 2020/6/21 ]
+     */
+    public HeroNode postOrderSearch(int no) {
+        HeroNode resNode = null;
+        //左子树遍历
+        if (this.left != null) {
+            resNode = this.left.postOrderSearch(no);
+        }
+        if (null != resNode) {
+            return resNode;
+        }
+        //右子树遍历
+        if (this.right != null) {
+            resNode = this.right.postOrderSearch(no);
+        }
+        if (null != resNode) {
+            return resNode;
+        }
+        System.out.println("进入后序遍历");
+        //父节点
+        if (this.getNo() == no) {
+            return this;
+        }
+        return resNode;
+    }
 
     /**
      * @param

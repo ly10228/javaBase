@@ -4,11 +4,11 @@ import org.junit.Test;
 
 /**
  * @author luoyong
- * @Description: BinaryTreeDemo
+ * @Description: BinaryTreeTest
  * @create 2020-06-20 17:30
  * @last modify by [LuoYong 2020-06-20 17:30]
  **/
-public class BinaryTreeDemo {
+public class BinaryTreeTest {
     private BinaryTree binaryTree = new BinaryTree();
 
     private BinaryTree initBinaryTree(BinaryTree binaryTree) {
@@ -26,6 +26,55 @@ public class BinaryTreeDemo {
         binaryTree.setRoot(root);
         return binaryTree;
     }
+
+    /**
+     * @param
+     * @return void
+     * @Description: 测试前序遍历查找指定no对应的节点
+     * @author luoyong
+     * @create 10:35 2020/6/21
+     * @last modify by [LuoYong 10:35 2020/6/21 ]
+     */
+    @Test
+    public void testPreOrderSearch() {
+        initBinaryTree(binaryTree);
+        HeroNode heroNode = binaryTree.preOrderSearch(5);
+        System.out.println(heroNode);
+    }
+
+
+    /**
+     * @param
+     * @return void
+     * @Description: 测试中序遍历查找指定no对应的节点
+     * @author luoyong
+     * @create 10:35 2020/6/21
+     * @last modify by [LuoYong 10:35 2020/6/21 ]
+     */
+    @Test
+    public void testInfixOrderSearch() {
+        initBinaryTree(binaryTree);
+        HeroNode heroNode = binaryTree.infixOrderSearch(5);
+        System.out.println(heroNode);
+    }
+
+
+
+    /**
+     * @param
+     * @return void
+     * @Description: 测试后序遍历查找指定no对应的节点
+     * @author luoyong
+     * @create 10:35 2020/6/21
+     * @last modify by [LuoYong 10:35 2020/6/21 ]
+     */
+    @Test
+    public void testPostOrderSearch() {
+        initBinaryTree(binaryTree);
+        HeroNode heroNode = binaryTree.postOrderSearch(5);
+        System.out.println(heroNode);
+    }
+
 
     /**
      * @param
