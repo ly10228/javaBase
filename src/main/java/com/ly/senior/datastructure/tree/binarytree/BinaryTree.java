@@ -13,6 +13,30 @@ public class BinaryTree {
         this.root = root;
     }
 
+    /**
+     * @param no
+     * @return void
+     * @Description: 删除指定编号的节点
+     * 1.如果删除的节点是叶子节点，则删除该节点
+     * 2.如果删除的节点是非叶子节点，则删除该子树
+     * @author luoyong
+     * @create 11:41 2020/6/21
+     * @last modify by [LuoYong 11:41 2020/6/21 ]
+     */
+    public void delNode(int no) {
+        if (root != null) {
+            if (root.getNo() == no) {
+                //当前根节点就是要被删除节点 则根节点直接置为null
+                this.root = null;
+                return;
+            } else {
+                this.root.delNode(no);
+            }
+        } else {
+            System.out.println("空树 无法进行删除");
+        }
+    }
+
 
     /**
      * @param no 指定编号

@@ -30,6 +30,27 @@ public class BinaryTreeTest {
     /**
      * @param
      * @return void
+     * @Description: 测试节点的删除
+     * 规则：
+     * 1.如果删除的节点是叶子节点，则删除该节点
+     * 2.如果删除的节点是非叶子节点，则删除该子树
+     * @author luoyong
+     * @create 11:44 2020/6/21
+     * @last modify by [LuoYong 11:44 2020/6/21 ]
+     */
+    @Test
+    public void testDelNode() {
+        initBinaryTree(binaryTree);
+        //删除之前输出二叉树
+        binaryTree.preOrder();
+        binaryTree.delNode(5);
+        //删除之后输出二叉树
+        binaryTree.preOrder();
+    }
+
+    /**
+     * @param
+     * @return void
      * @Description: 测试前序遍历查找指定no对应的节点
      * @author luoyong
      * @create 10:35 2020/6/21
@@ -57,7 +78,6 @@ public class BinaryTreeTest {
         HeroNode heroNode = binaryTree.infixOrderSearch(5);
         System.out.println(heroNode);
     }
-
 
 
     /**

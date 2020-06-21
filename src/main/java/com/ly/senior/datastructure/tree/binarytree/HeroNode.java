@@ -28,6 +28,42 @@ public class HeroNode {
     }
 
     /**
+     * @param no
+     * @return void
+     * @Description: 删除指定编号的节点
+     * 1：如果指定删除的节点是叶子节点 则直接删除该节点
+     * 2：如果指定删除的节点非叶子节点 则删除该子树
+     * 思路：
+     * 1. 因为我们的二叉树是单向的，所以我们是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是不是需要删除结点.
+     * 2. 如果当前结点的左子结点不为空，并且左子结点 就是要删除结点，就将this.left = null; 并且就返回(结束递归删除)
+     * 3. 如果当前结点的右子结点不为空，并且右子结点 就是要删除结点，就将this.right= null ;并且就返回(结束递归删除)
+     * 4. 如果第2和第3步没有删除结点，那么我们就需要向左子树进行递归删除
+     * 5.  如果第4步也没有删除结点，则应当向右子树进行递归删除.
+     * @author luoyong
+     * @create 11:08 2020/6/21
+     * @last modify by [LuoYong 11:08 2020/6/21 ]
+     */
+    public void delNode(int no) {
+        if (this.left != null && this.left.getNo() == no) {
+            this.left = null;
+            return;
+        }
+        if (this.right != null && this.right.getNo() == no) {
+            this.right = null;
+            return;
+        }
+        //向左递归
+        if (this.left != null) {
+            this.left.delNode(no);
+        }
+        //向右递归
+        if (this.right != null) {
+            this.right.delNode(no);
+        }
+
+    }
+
+    /**
      * @param no 节点编号
      * @return
      * @Description: 前序遍历查找指定no对应的节点
