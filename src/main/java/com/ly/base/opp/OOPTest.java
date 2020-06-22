@@ -1,5 +1,11 @@
 package com.ly.base.opp;
 
+import com.google.common.collect.Maps;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.Map;
+
 /**
  * @author luoyong
  * @Description: 面向对象
@@ -53,4 +59,25 @@ package com.ly.base.opp;
  * @last modify by [LuoYong 2019-09-23 22:14]
  **/
 public class OOPTest {
+    public static void main(String[] args) {
+//        Foo<String> foo = new Foo<String>(){};
+        Map<String, String> maps = Maps.newHashMap();
+        Foo<Map> foo = new Foo<Map>() {
+        };
+        // 在类的外部这样获取
+        Type type = ((ParameterizedType) foo.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        System.out.println(type.getTypeName());
+        // 在类的内部这样获取
+        System.out.println(foo.getTClass());
+        System.out.println(foo.getTClass().getTypeName());
+
+    }
+
+}
+
+abstract class Foo<T> {
+    public Class<T> getTClass() {
+        Class<T> tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        return tClass;
+    }
 }

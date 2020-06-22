@@ -1,4 +1,4 @@
-package com.ly.senior.datastructure.sort;
+package com.ly.senior.algorithm.sort;
 
 import org.junit.Test;
 
