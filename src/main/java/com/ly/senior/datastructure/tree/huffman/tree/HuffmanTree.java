@@ -1,4 +1,4 @@
-package com.ly.senior.datastructure.tree.huffmantree;
+package com.ly.senior.datastructure.tree.huffman.tree;
 
 import com.google.common.collect.Lists;
 
