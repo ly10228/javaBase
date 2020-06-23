@@ -17,6 +17,15 @@ import java.util.Map;
  **/
 public class HuffmanCodeTest {
 
+    /**
+     * key：Byte value：赫夫曼树编码
+     * 生成的赫夫曼编码表{32=01, 97=100, 100=11000, 117=11001, 101=1110, 118=11011, 105=101, 121=11010, 106=0010, 107=1111, 108=000, 111=0011}
+     */
+    private static Map<Byte, String> huffmanByteCodeMap = Maps.newHashMap();
+
+    //2. 在生成赫夫曼编码表示，需要去拼接路径, 定义一个StringBuilder 存储某个叶子结点的路径
+    private static StringBuilder stringBuilder = new StringBuilder();
+
     @Test
     public void test() {
         String content = "i like like like java do you like a java";
@@ -24,7 +33,98 @@ public class HuffmanCodeTest {
         //40
         System.out.println(contentBytes.length);
         System.out.println(Arrays.toString(contentBytes));
+
+        //1:将字节数组转换成Node
+        List<Node> nodes = getNodes(contentBytes);
+        //2:用Node创建赫夫曼树
+        Node huffmanTree = createHuffmanTree(nodes);
+        //前序遍历
+        huffmanTree.preOrder();
+        //3: 生成赫夫曼编码
+        Map<Byte, String> huffmanCodes = getCodes(huffmanTree);
+        //打印结果
+        //~生成的赫夫曼编码表= {32=01, 97=100, 100=11000, 117=11001, 101=1110, 118=11011, 105=101, 121=11010, 106=0010, 107=1111, 108=000, 111=0011}
+        System.out.println("~生成的赫夫曼编码表= " + huffmanCodes);
+
     }
+
+
+    /**
+     * @param bytes
+     * @param huffmanByteCodeMap
+     * @return byte[]
+     * @Description: 编写一个方法，将字符串对应的byte[] 数组，通过生成的赫夫曼编码表，返回一个赫夫曼编码 压缩后的byte[]
+     * @author luoyong
+     * @create 3:55 下午 2020/6/23
+     * @last modify by [LuoYong 3:55 下午 2020/6/23 ]
+     */
+    public static byte[] zip(byte[] bytes, Map<Byte, String> huffmanByteCodeMap) {
+        return null;
+    }
+
+
+    /**
+     * @param root
+     * @return
+     * @Description: 生成赫夫曼树对应的赫夫曼编码
+     * @author luoyong
+     * @create 3:52 下午 2020/6/23
+     * @last modify by [LuoYong 3:52 下午 2020/6/23 ]
+     */
+    public static Map<Byte, String> getCodes(Node root) {
+        if (null == root) {
+            return Maps.newHashMap();
+        }
+
+        //处理root的左子树
+        getCodes(root.getLeft(), "0", stringBuilder);
+        //处理root的右子树
+        getCodes(root.getRight(), "1", stringBuilder);
+
+        return huffmanByteCodeMap;
+    }
+
+
+    /**
+     * @param node          节点
+     * @param code          路径：左子节点是 0 右子节点是 1
+     * @param stringBuilder 用于路径拼接
+     * @return void
+     * @Description: 将传入Node节点所有叶子节点的赫夫曼编码得到 并放入到Map当中
+     * @author luoyong
+     * @create 3:32 下午 2020/6/23
+     * @last modify by [LuoYong 3:32 下午 2020/6/23 ]
+     */
+    public static void getCodes(Node node, String code, StringBuilder stringBuilder) {
+        StringBuilder stringBuilder1 = new StringBuilder(stringBuilder);
+        //将code加入stringBuilder1
+        stringBuilder1.append(code);
+        if (node != null) {
+            //判断当前node 是叶子节点还是非叶子节点
+            if (null == node.getData()) {
+                //非叶子节点
+                //递归处理
+                //向左递归
+                getCodes(node.getLeft(), "0", stringBuilder1);
+                //向右递归
+                getCodes(node.getRight(), "1", stringBuilder1);
+            } else {
+                //是叶子节点
+                huffmanByteCodeMap.put(node.getData(), stringBuilder1.toString());
+            }
+        }
+
+    }
+
+
+    private static void preOrder(Node root) {
+        if (root != null) {
+            root.preOrder();
+        } else {
+            System.out.println("赫夫曼树为空");
+        }
+    }
+
 
     /**
      * @param bytes 字节数组
