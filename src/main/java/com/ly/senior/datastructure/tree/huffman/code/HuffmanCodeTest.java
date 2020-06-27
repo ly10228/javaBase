@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.junit.Test;
 
+import java.io.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -52,6 +53,7 @@ public class HuffmanCodeTest {
         System.out.println("huffmanCodeBytes=" + Arrays.toString(huffmanCodeBytes));
     }
 
+
     /**
      * @return void
      * @Description: 测试解码
@@ -74,6 +76,134 @@ public class HuffmanCodeTest {
         byte[] decodeHuffmanCodes = decode(huffmanCodes, huffmanByteCodeMap);
         // "i like like like java do you like a java"
         System.out.println("原来的字符串=" + new String(decodeHuffmanCodes));
+    }
+
+
+    /**
+     * @return void
+     * @Description: 测试使用赫夫曼编码对文件进行压缩和解压
+     * @author luoyong
+     * @create 5:07 下午 2020/6/27
+     * @last modify by [LuoYong 5:07 下午 2020/6/27 ]
+     */
+    @Test
+    public void testZip() {
+        String srcFile = "/Users/luoyong/java/doc/hello.txt";
+        String dstFile = "/Users/luoyong/java/doc/hello.zip";
+        zipFile(srcFile, dstFile);
+        System.out.println("压缩文件ok~~");
+    }
+
+
+    /**
+     * @return void
+     * @Description: 测试文件解压
+     * @author luoyong
+     * @create 5:13 下午 2020/6/27
+     * @last modify by [LuoYong 5:13 下午 2020/6/27 ]
+     */
+    @Test
+    public void testUnzip() {
+        String zipFile = "/Users/luoyong/java/doc/hello.zip";
+        String dstFile = "/Users/luoyong/java/doc/helloUnzip.txt";
+        unzipFile(zipFile, dstFile);
+        System.out.println("解压成功~~");
+    }
+
+    /**
+     * @param zipFile 准备解压的文件
+     * @param dstFile 将文件解压到那个路径
+     * @return void
+     * @Description: 完成对压缩文件的解压
+     * @author luoyong
+     * @create 4:56 下午 2020/6/27
+     * @last modify by [LuoYong 4:56 下午 2020/6/27 ]
+     */
+    public static void unzipFile(String zipFile, String dstFile) {
+        //定义文件输入流
+        InputStream is = null;
+        //定义一个对象输入流
+        ObjectInputStream ois = null;
+        //定义一个文件输出流
+        OutputStream os = null;
+        try {
+            //1:读源文件当中的数据
+            //创建文件输入流
+            is = new FileInputStream(zipFile);
+            //创建一个和is 关联的对象输入流
+            ois = new ObjectInputStream(is);
+            //读取byte数组
+            byte[] huffmanBytes = (byte[]) ois.readObject();
+            //读取赫夫曼code对照表
+            huffmanByteCodeMap = (Map<Byte, String>) ois.readObject();
+
+            //2 进行解码
+            byte[] decodeHuffmanBytes = decode(huffmanBytes, huffmanByteCodeMap);
+
+            //3:写到目的文件当中
+            os = new FileOutputStream(dstFile);
+            os.write(decodeHuffmanBytes);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                is.close();
+                os.close();
+                ois.close();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+
+    /**
+     * @param srcFile 源文件
+     * @param dstFile 压缩到指定文件
+     * @return void
+     * @Description: 压缩文件到执行的文件 无损
+     * @author luoyong
+     * @create 4:15 下午 2020/6/27
+     * @last modify by [LuoYong 4:15 下午 2020/6/27 ]
+     */
+    public static void zipFile(String srcFile, String dstFile) {
+        //创建输出流
+        OutputStream os = null;
+        ObjectOutputStream oos = null;
+        //创建文件的输入流
+        FileInputStream is = null;
+        try {
+            //1：创建文件的输入流 读数据
+            is = new FileInputStream(srcFile);
+            //创建一个源文件一样大小的的字节数组
+            byte[] b = new byte[is.available()];
+            //把流中的数据读入到指定的字节数组当中
+            is.read(b);
+
+
+            //2: 直接对源文件进行压缩
+            byte[] huffmanBytes = huffmanZip(b);
+
+            //3:创建文件的输出流 存放压缩文件
+            os = new FileOutputStream(dstFile);
+            //创建一个和文件输出流关联的ObjectOutputStream
+            oos = new ObjectOutputStream(os);
+            //把赫夫曼编码后的字节数组写入压缩文件
+            oos.writeObject(huffmanBytes);
+            //这里我们以对象流的方式写入赫夫曼编码 是为了以后我们恢复源文件时使用
+            oos.writeObject(huffmanByteCodeMap);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                is.close();
+                os.close();
+                oos.close();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 
