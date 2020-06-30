@@ -36,6 +36,19 @@ public class AVLTreeTest {
 
     /**
      * @return void
+     * @Description: 测试右旋
+     * @author luoyong
+     * @create 11:23 下午 2020/6/30
+     * @last modify by [LuoYong 11:23 下午 2020/6/30 ]
+     */
+    @Test
+    public void testRightRotate() {
+        AVLTree avlTree = initTree(new int[]{10, 12, 8, 9, 7, 6});
+        show(avlTree);
+    }
+
+    /**
+     * @return void
      * @Description: 测试左旋
      * @author luoyong
      * @create 9:29 下午 2020/6/30

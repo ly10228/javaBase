@@ -42,7 +42,16 @@ public class AvlNode {
     public void rightRotate() {
         //1:创建新的节点 以当前根节点的值为值
         AvlNode newNode = new AvlNode(value);
-
+        //2:把新节点的右子树-->当前那节点的右子树
+        newNode.right = right;
+        //3:新节点的左子树设置成-->当前左子树的右子树
+        newNode.left = left.right;
+        //4:把当前节点的值换成左子节点的值
+        value = left.value;
+        //5:把当前节点的左子树设置成左子树的左子树
+        left = left.left;
+        //6:把当前节点的右子树设置成为新节点
+        right = newNode;
     }
 
     /**
@@ -213,6 +222,10 @@ public class AvlNode {
         if (rightHeight() - leftHeight() > 1) {
             //左旋转
             leftRotate();
+        }
+        if (leftHeight() - rightHeight() > 1) {
+            //有旋转
+            rightRotate();
         }
         return;
     }
