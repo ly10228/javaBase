@@ -33,6 +33,33 @@ public class AvlNode {
      */
 
     /**
+     * @return void
+     * @Description: 左旋转
+     * @author luoyong
+     * @create 9:00 下午 2020/6/30
+     * @last modify by [LuoYong 9:00 下午 2020/6/30 ]
+     */
+    public void leftRotate() {
+        //1:创建新的节点 以当前根节点的值为值
+        AvlNode newNode = new AvlNode(this.value);
+
+        //2:新节点的左子树-->当前节点的左子树
+        newNode.left = left;
+
+        //3:新节点的右子树-->当前节点右子树的右子树
+        newNode.right = right.left;
+
+        //4:当前节点的值替换成有节点的值
+        value = right.value;
+
+        //5:当前节点的右子树-->当前节点的右子树的右子树
+        right = right.right;
+
+        //6:当前节点的左子树-->新的节点
+        left = newNode;
+    }
+
+    /**
      * @param
      * @return int
      * @Description: 获取左子树的高度
@@ -168,6 +195,13 @@ public class AvlNode {
                 this.right.add(node);
             }
         }
+
+        //右子树的高度-左子树高度>1 进行左旋转
+        if (rightHeight() - leftHeight() > 1) {
+            //左旋转
+            leftRotate();
+        }
+        return;
     }
 
 
