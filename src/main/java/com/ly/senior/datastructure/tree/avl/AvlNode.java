@@ -34,7 +34,20 @@ public class AvlNode {
 
     /**
      * @return void
-     * @Description: 左旋转
+     * @Description: 右旋转 左子树-右子树>1
+     * @author luoyong
+     * @create 9:40 下午 2020/6/30
+     * @last modify by [LuoYong 9:40 下午 2020/6/30 ]
+     */
+    public void rightRotate() {
+        //1:创建新的节点 以当前根节点的值为值
+        AvlNode newNode = new AvlNode(value);
+
+    }
+
+    /**
+     * @return void
+     * @Description: 左旋转 右子树--
      * @author luoyong
      * @create 9:00 下午 2020/6/30
      * @last modify by [LuoYong 9:00 下午 2020/6/30 ]
