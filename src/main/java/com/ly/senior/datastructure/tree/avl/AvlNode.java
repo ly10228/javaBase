@@ -220,14 +220,24 @@ public class AvlNode {
 
         //右子树的高度-左子树高度>1 进行左旋转
         if (rightHeight() - leftHeight() > 1) {
+            if (null != right && right.rightHeight() < right.leftHeight()) {
+                //右旋转
+                right.rightRotate();
+            }
             //左旋转
             leftRotate();
+            return;
         }
+        //左子树高度-右子树高度>1 进行右旋转
         if (leftHeight() - rightHeight() > 1) {
+            if (null != left && left.leftHeight() < left.rightHeight()) {
+                //left.left高度<left.right高度
+                //进行左旋转
+                left.leftRotate();
+            }
             //有旋转
             rightRotate();
         }
-        return;
     }
 
 

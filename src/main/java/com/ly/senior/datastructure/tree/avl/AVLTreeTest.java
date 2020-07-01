@@ -35,6 +35,21 @@ public class AVLTreeTest {
 
 
     /**
+     * @param
+     * @return void
+     * @Description: 测试双旋转
+     * @author luoyong
+     * @create 22:50 2020/7/1
+     * @last modify by [LuoYong 22:50 2020/7/1 ]
+     */
+    @Test
+    public void testDoubleRotate() {
+        int[] arr = { 10, 11, 7, 6, 8, 9 };
+        AVLTree avlTree = initTree(arr);
+        show(avlTree);
+    }
+
+    /**
      * @return void
      * @Description: 测试右旋
      * @author luoyong
