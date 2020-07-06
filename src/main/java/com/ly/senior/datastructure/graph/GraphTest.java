@@ -11,16 +11,17 @@ import org.junit.Test;
 public class GraphTest {
 
     /**
-     * @param
-     * @return void
-     * @Description: 测试生成一个图
+     * @param vertexArr
+     * @return
+     * @Description: 初始化图
      * @author luoyong
-     * @create 22:20 2020/7/6
-     * @last modify by [LuoYong 22:20 2020/7/6 ]
+     * @create 23:04 2020/7/6
+     * @last modify by [LuoYong 23:04 2020/7/6 ]
      */
-    @Test
-    public void testAddGraph() {
-        String vertexArr[] = {"A", "B", "C", "D", "E"};
+    private Graph initGraph(String vertexArr[]) {
+        if (null == vertexArr) {
+            vertexArr = new String[]{"A", "B", "C", "D", "E"};
+        }
         //1:创建图对象
         Graph graph = new Graph(vertexArr.length);
 
@@ -36,7 +37,40 @@ public class GraphTest {
         graph.insertEdge(1, 2, 1);
         graph.insertEdge(1, 3, 1);
         graph.insertEdge(1, 4, 1);
+        return graph;
+    }
 
+    /**
+     * @param
+     * @return void
+     * @Description: 测试深度优先遍历算法
+     * @author luoyong
+     * @create 23:00 2020/7/6
+     * @last modify by [LuoYong 23:00 2020/7/6 ]
+     */
+    @Test
+    public void testDfs() {
+        //初始化图
+        Graph graph = initGraph(null);
+
+        //深度优先遍历
+        graph.dfs();
+
+    }
+
+
+    /**
+     * @param
+     * @return void
+     * @Description: 测试生成一个图
+     * @author luoyong
+     * @create 22:20 2020/7/6
+     * @last modify by [LuoYong 22:20 2020/7/6 ]
+     */
+    @Test
+    public void testAddGraph() {
+        //初始化图
+        Graph graph = initGraph(null);
         //显示一把邻结矩阵
         graph.showGraph();
     }
