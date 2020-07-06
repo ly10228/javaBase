@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import lombok.Data;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -51,6 +52,84 @@ public class Graph {
         vertexList = Lists.newArrayList();
         numOfEdges = 0;
     }
+
+
+    /**
+     * @param
+     * @return void
+     * @Description: 广度优先遍历
+     * @author luoyong
+     * @create 0:02 2020/7/7
+     * @last modify by [LuoYong 0:02 2020/7/7 ]
+     */
+    public void bfs() {
+        isVisited = new boolean[vertexList.size()];
+        for (int i = 0; i < getNumberOfVertex(); i++) {
+            if (!isVisited[i]) {
+                bfs(isVisited, i);
+            }
+        }
+    }
+
+
+    /**
+     * @param isVisited 记录节点是否被访问的数组
+     * @param i
+     * @return void
+     * @Description: 广度优先遍历算法
+     * 1：访问初始结点v并标记结点v为已访问
+     * 2：结点v入队列
+     * 3：当队列非空时，继续执行，否则算法结束
+     * 4：出队列，取得队头结点u
+     * 5：查找结点u的第一个邻接结点w。
+     * 6：若结点u的邻接结点w不存在，则转到步骤3；否则循环执行以下三个步骤：
+     * 6.1  若结点w尚未被访问，则访问结点w并标记为已访问。
+     * 6.2  结点w入队列
+     * 6.3  查找结点u的继w邻接结点后的下一个邻接结点w，转到步骤6
+     * @author luoyong
+     * @create 23:49 2020/7/6
+     * @last modify by [LuoYong 23:49 2020/7/6 ]
+     */
+    private void bfs(boolean[] isVisited, int i) {
+        //表示队列的头节点对应的下标
+        int u;
+        //得到第一个邻结点的下标 w
+        int w;
+        //队列 记录结点访问的顺序
+        LinkedList queue = new LinkedList();
+        //访问结点 输出节点信息
+        System.out.print(vertexList.get(i) + "->");
+
+        //标记为已读
+        isVisited[i] = true;
+
+        //将节点加入队列
+        queue.addLast(i);
+
+        while (!queue.isEmpty()) {
+            //取出队列头节点的下标
+            u = (Integer) queue.removeFirst();
+            //得到第一个邻结点的下标
+            w = getFirstNeighbor(u);
+            while (w != -1) {
+                //找到
+                //判断是否被访问过
+                if (!isVisited[w]) {
+                    //没有被访问过
+                    System.out.print(getValueByIndex(w) + "->");
+                    //标记被访问过
+                    isVisited[w] = true;
+                    //加入队列
+                    queue.addLast(w);
+                }
+
+                //以u为前驱节点 找w后面的下一个邻结点
+                w = getNextNeighbor(u, w);
+            }
+        }
+
+    }
+
 
     /**
      * @param v1

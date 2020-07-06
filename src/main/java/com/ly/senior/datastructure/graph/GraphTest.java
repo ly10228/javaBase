@@ -43,6 +43,23 @@ public class GraphTest {
     /**
      * @param
      * @return void
+     * @Description: 测试广度优先遍历
+     * @author luoyong
+     * @create 0:05 2020/7/7
+     * @last modify by [LuoYong 0:05 2020/7/7 ]
+     */
+    @Test
+    public void testBfs() {
+        //初始化图
+        Graph graph = initGraph(null);
+
+        //广度优先遍历
+        graph.bfs();
+    }
+
+    /**
+     * @param
+     * @return void
      * @Description: 测试深度优先遍历算法
      * @author luoyong
      * @create 23:00 2020/7/6
