@@ -12,6 +12,7 @@ import java.util.concurrent.TimeoutException;
  * @Description: FutureTask
  * FutureTask 缺点：get()阻塞
  * 什么是高并发--》克服阻塞 尽量少加锁或者不加锁
+ * 不见不散--过时不候--轮询（以下都不建议使用）
  **/
 public class FutureTaskDemo {
 
