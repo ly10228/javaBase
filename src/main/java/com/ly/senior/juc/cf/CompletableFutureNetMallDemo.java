@@ -42,7 +42,7 @@ public class CompletableFutureNetMallDemo {
      * @param malls
      * @param productName
      * @return
-     * @Description: 同步的方法获取价格 step by step
+     * @Description: 同步的方法获取价格 step by step  List<NetMall>  ---->   List<String>
      * @author luoyong
      * @create 3:21 下午 2021/4/4
      * @last modify by [LuoYong 3:21 下午 2021/4/4 ]
@@ -59,7 +59,7 @@ public class CompletableFutureNetMallDemo {
      * @param mallList
      * @param productName
      * @return
-     * @Description: 异步的方式获取价格
+     * @Description: 异步的方式获取价格  List<NetMall>  ---->List<CompletableFuture<String>> --->   List<String>
      * @author luoyong
      * @create 11:19 上午 2021/4/5
      * @last modify by [LuoYong 11:19 上午 2021/4/5 ]
