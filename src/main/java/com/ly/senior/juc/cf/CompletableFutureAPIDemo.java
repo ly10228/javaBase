@@ -125,4 +125,34 @@ public class CompletableFutureAPIDemo {
     }
 
 
+    /**
+     * @return void
+     * @Description: 对计算结果进行消费
+     * @author luoyong
+     * @create 4:33 下午 2021/4/5
+     * @last modify by [LuoYong 4:33 下午 2021/4/5 ]
+     */
+    @Test
+    public void testM3() {
+        CompletableFuture.supplyAsync(() -> {
+            return 1;
+        }).thenApply(f -> {
+            return f + 2;
+        }).thenApply(f -> {
+            return f + 3;
+        }).thenAccept(r -> System.out.println(r));
+
+        //补充 任务之间执行顺序的说明
+
+        //任务 A 执行完执行 B，并且 B 不需要 A 的结果
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenRun(() -> {
+        }).join());
+
+        //任务 A 执行完执行 B，B 需要 A 的结果，但是任务 B 无返回值
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenAccept(resultA -> {
+        }).join());
+
+        //任务 A 执行完执行 B，B 需要 A 的结果，同时任务 B 有返回值
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenApply(resultA -> resultA + " resultB").join());
+    }
 }
