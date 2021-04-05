@@ -192,4 +192,23 @@ public class CompletableFutureAPIDemo {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @return void
+     * @Description: 对计算结果进行合并 案例（一个报表 涉及到多个模块 比如 商机信息+合同信息 分别起两个线程去计算 然后进行合并）
+     * 两个CompletionStage任务都完成后，最终能把两个任务的结果一起交给thenCombine 来处理
+     * 先完成的先等着，等待其它分支任务
+     * @author luoyong
+     * @create 4:52 下午 2021/4/5
+     * @last modify by [LuoYong 4:52 下午 2021/4/5 ]
+     */
+    public void testM5() {
+        System.out.println(CompletableFuture.supplyAsync(() -> {
+            return 10;
+        }).thenCombine(CompletableFuture.supplyAsync(() -> {
+            return 20;
+        }), (r1, r2) -> {
+            return r1 + r2;
+        }).join());
+    }
 }
