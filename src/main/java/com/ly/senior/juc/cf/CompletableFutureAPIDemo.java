@@ -36,7 +36,7 @@ public class CompletableFutureAPIDemo {
                 e.printStackTrace();
             }
             return 1;
-        });
+        }, threadPoolExecutor);
 
         //不见不散 直接阻塞
 //        System.out.println(future.get());
