@@ -14,6 +14,13 @@ public class CompletableFutureAPIDemo {
 
 
     /**
+     * 线程池
+     */
+    private final static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L, TimeUnit.SECONDS,
+            new LinkedBlockingDeque<>(50),
+            Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
+    /**
      * @return void
      * @Description: 以下四种api测试
      * get() 不见不散
@@ -26,8 +33,7 @@ public class CompletableFutureAPIDemo {
      */
     @Test
     public void testM1() throws InterruptedException, ExecutionException, TimeoutException {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(50),
-                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             try {
                 //睡眠2s
@@ -56,4 +62,67 @@ public class CompletableFutureAPIDemo {
         System.out.println(future.complete(-44) + "\t" + future.get());
         threadPoolExecutor.shutdown();
     }
+
+    /**
+     * @return void
+     * @Description: 测试 对计算结果进行处理
+     * thenApply
+     * 计算结果存在依赖关系，这两个线程串行化
+     * 由于存在依赖关系(当前步错，不走下一步)，当前步骤有异常的话就叫停。
+     * handle
+     * 有异常也可以往下一步走，根据带的异常参数可以进一步处理
+     * @author luoyong
+     * @create 4:15 下午 2021/4/5
+     * @last modify by [LuoYong 4:15 下午 2021/4/5 ]
+     */
+    @Test
+    public void testM2() {
+
+        System.out.println(CompletableFuture.supplyAsync(() -> {
+            return 1;
+        }).handle((f, e) -> {
+            System.out.println("-------->1");
+            //制造异常 后续无法进行
+            int i = 10 / 0;
+            return f + 2;
+        }).handle((f, e) -> {
+            System.out.println("-------->2");
+            return f + 3;
+        }).handle((f, e) -> {
+            System.out.println("-------->3");
+            return f + 4;
+        }).whenComplete((f, e) -> {
+            if (null == e) {
+                System.out.println("result=====" + f);
+            }
+        }).exceptionally(e -> {
+            e.printStackTrace();
+            return null;
+        }).join());
+
+
+        System.out.println(CompletableFuture.supplyAsync(() -> {
+            return 1;
+        }).thenApply(f -> {
+            System.out.println("-------->1");
+            //制造异常 后续无法进行
+            int i = 10 / 0;
+            return f + 2;
+        }).thenApply(f -> {
+            System.out.println("-------->2");
+            return f + 3;
+        }).thenApply(f -> {
+            System.out.println("-------->3");
+            return f + 4;
+        }).whenComplete((f, e) -> {
+            if (null == e) {
+                System.out.println("result=====" + f);
+            }
+        }).exceptionally(e -> {
+            e.printStackTrace();
+            return null;
+        }).join());
+    }
+
+
 }
