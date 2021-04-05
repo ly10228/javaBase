@@ -155,4 +155,41 @@ public class CompletableFutureAPIDemo {
         //任务 A 执行完执行 B，B 需要 A 的结果，同时任务 B 有返回值
         System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenApply(resultA -> resultA + " resultB").join());
     }
+
+
+    /**
+     * @return void
+     * @Description: 对计算速度进行选用 类似于斗地主游戏的场景
+     * @author luoyong
+     * @create 4:44 下午 2021/4/5
+     * @last modify by [LuoYong 4:44 下午 2021/4/5 ]
+     */
+    @Test
+    public void testM4() {
+        System.out.println(CompletableFuture.supplyAsync(() -> {
+            //暂停几秒钟线程
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return 1;
+        }).applyToEither(CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return 2;
+        }), r -> {
+            return r;
+        }).join());
+
+        //暂停几秒钟线程
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
