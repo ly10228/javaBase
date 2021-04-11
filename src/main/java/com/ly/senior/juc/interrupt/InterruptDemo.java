@@ -16,7 +16,14 @@ public class InterruptDemo {
     static AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
     public static void main(String[] args) {
-        m4();
+
+        System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
+        System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
+        System.out.println("111111");
+        Thread.currentThread().interrupt();///----false---> true
+        System.out.println("222222");
+        System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
+        System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
     }
 
     /**
@@ -154,7 +161,7 @@ public class InterruptDemo {
 
     /**
      * @return void
-     * @Description: wait sleep join几种状态下会报异常
+     * @Description: 使用过interrupt()中断线程的时候 wait sleep join几种状态下会报异常
      * @author luoyong
      * @create 11:05 下午 2021/4/5
      * @last modify by [LuoYong 11:05 下午 2021/4/5 ]
