@@ -30,14 +30,23 @@ public class LockSupportDemo {
 
         new Thread(() -> {
             LockSupport.unpark(t1);
-            try {
-                TimeUnit.SECONDS.sleep(3);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
             LockSupport.unpark(t1);
             System.out.println(Thread.currentThread().getName() + "\t" + "---发出通知");
         }, "t2").start();
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //停2次
+        new Thread(() -> {
+            LockSupport.unpark(t1);
+            System.out.println(Thread.currentThread().getName() + "\t" + "---发出通知");
+        }, "t3").start();
+
     }
 
     /**
