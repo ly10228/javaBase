@@ -20,6 +20,7 @@ public class LockSupportDemo {
 
 
     public static void main(String[] args) {
+        //非阻塞的 无锁化通知
         Thread t1 = new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + "\t" + "---come in");
             LockSupport.park();
