@@ -18,6 +18,7 @@ public class ReentrantReadWriteLockDemo {
         //资源类
         MyResource myResource = new MyResource();
 
+        //写
         for (int i = 1; i <= 10; i++) {
             int finalI = i;
             new Thread(() -> {
@@ -25,6 +26,7 @@ public class ReentrantReadWriteLockDemo {
             }, String.valueOf(i)).start();
         }
 
+        //读
         for (int i = 1; i <= 10; i++) {
             int finalI = i;
             new Thread(() -> {
@@ -32,6 +34,7 @@ public class ReentrantReadWriteLockDemo {
             }, String.valueOf(i)).start();
         }
 
+        //readLock.unlock()之后 其他线程才能写
         for (int i = 1; i <= 3; i++) {
             int finalI = i;
             new Thread(() -> {
