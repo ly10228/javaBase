@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * @author luoyong
  *  * @create 2021-05-05 10:50 下午
  *  * @last modify by [luoyong 2021-05-05 10:50 下午]
- * @Description: 测试OOM
+ * @Description: 测试OOM--可以通过visualVM进行观察（Visual GC工具）
  * 设置堆大小： -Xms600m -Xmx600m
  **/
 public class OOMTest {
@@ -16,7 +16,7 @@ public class OOMTest {
         ArrayList<Picture> list = new ArrayList<>();
         while (true) {
             try {
-                TimeUnit.MILLISECONDS.sleep(10);
+                TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
