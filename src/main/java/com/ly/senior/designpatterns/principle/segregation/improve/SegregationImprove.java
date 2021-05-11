@@ -108,6 +108,7 @@ class A {
     public void dependThree(InterfaceTwo i) {
         i.operationThree();
     }
+
 }
 
 /**
