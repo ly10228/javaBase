@@ -2,6 +2,7 @@ package com.ly.senior.algorithm.sort;
 
 import org.junit.Test;
 
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -26,10 +27,13 @@ public class BubbleSort {
      */
     @Test
     public void testTime() {
-        int[] arr = new int[80000];
-        for (int i = 0; i < 80000; i++) {
-            arr[i] = (int) (Math.random() * 8000000); //生成一个[0, 8000000) 数
+        int[] arr = new int[2];
+        for (int i = 0; i < 2; i++) {
+            arr[i] = (int) (Math.random() * 2); //生成一个[0, 8000000) 数
         }
+
+        SecureRandom random = new SecureRandom();
+        int i = random.nextInt(1);
 
         Date data1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -146,7 +150,7 @@ public class BubbleSort {
     @Test
     public void testBubbleSortThought() {
 
-        int[] arr = new int[]{3, 9, -1, 10, -2};
+        int[] arr = new int[]{3, 11, -1, 10, -2};
 
         int temp = 0;
 

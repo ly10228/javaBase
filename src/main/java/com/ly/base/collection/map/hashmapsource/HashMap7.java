@@ -122,7 +122,7 @@
 // * @since   1.2
 // */
 //
-//public class HashMap<K,V>
+//public class HashMap7<K,V>
 //    extends AbstractMap<K,V>
 //    implements Map<K,V>, Cloneable, Serializable
 //{
@@ -236,7 +236,7 @@
 //            try {
 //                UNSAFE = sun.misc.Unsafe.getUnsafe();
 //                HASHSEED_OFFSET = UNSAFE.objectFieldOffset(
-//                    HashMap.class.getDeclaredField("hashSeed"));
+//                    HashMap7.class.getDeclaredField("hashSeed"));
 //            } catch (NoSuchFieldException | SecurityException e) {
 //                throw new Error("Failed to record hashSeed offset", e);
 //            }
@@ -264,7 +264,7 @@
 //     * @throws IllegalArgumentException if the initial capacity is negative
 //     *         or the load factor is nonpositive
 //     */
-//    public HashMap(int initialCapacity, float loadFactor) {
+//    public HashMap7(int initialCapacity, float loadFactor) {
 //        if (initialCapacity < 0)
 //            throw new IllegalArgumentException("Illegal initial capacity: " +
 //                                               initialCapacity);
@@ -294,7 +294,7 @@
 //     * @param  initialCapacity the initial capacity.
 //     * @throws IllegalArgumentException if the initial capacity is negative.
 //     */
-//    public HashMap(int initialCapacity) {
+//    public HashMap7(int initialCapacity) {
 //        this(initialCapacity, DEFAULT_LOAD_FACTOR);
 //    }
 //
@@ -302,7 +302,7 @@
 //     * Constructs an empty <tt>HashMap</tt> with the default initial capacity
 //     * (16) and the default load factor (0.75).
 //     */
-//    public HashMap() {
+//    public HashMap7() {
 //        this(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR);
 //    }
 //
@@ -315,7 +315,7 @@
 //     * @param   m the map whose mappings are to be placed in this map
 //     * @throws  NullPointerException if the specified map is null
 //     */
-//    public HashMap(Map<? extends K, ? extends V> m) {
+//    public HashMap7(Map<? extends K, ? extends V> m) {
 //        this(Math.max((int) (m.size() / DEFAULT_LOAD_FACTOR) + 1,
 //                      DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR);
 //        putAllForCreate(m);
@@ -754,9 +754,9 @@
 //     * @return a shallow copy of this map
 //     */
 //    public Object clone() {
-//        HashMap<K,V> result = null;
+//        HashMap7<K,V> result = null;
 //        try {
-//            result = (HashMap<K,V>)super.clone();
+//            result = (HashMap7<K,V>)super.clone();
 //        } catch (CloneNotSupportedException e) {
 //            // assert false;
 //        }
@@ -829,14 +829,14 @@
 //         * overwritten by an invocation of put(k,v) for a key k that's already
 //         * in the HashMap.
 //         */
-//        void recordAccess(HashMap<K,V> m) {
+//        void recordAccess(HashMap7<K,V> m) {
 //        }
 //
 //        /**
 //         * This method is invoked whenever the entry is
 //         * removed from the table.
 //         */
-//        void recordRemoval(HashMap<K,V> m) {
+//        void recordRemoval(HashMap7<K,V> m) {
 //        }
 //    }
 //
@@ -913,7 +913,7 @@
 //                throw new ConcurrentModificationException();
 //            Object k = current.key;
 //            current = null;
-//            HashMap.this.removeEntryForKey(k);
+//            HashMap7.this.removeEntryForKey(k);
 //            expectedModCount = modCount;
 //        }
 //    }
@@ -981,10 +981,10 @@
 //            return containsKey(o);
 //        }
 //        public boolean remove(Object o) {
-//            return HashMap.this.removeEntryForKey(o) != null;
+//            return HashMap7.this.removeEntryForKey(o) != null;
 //        }
 //        public void clear() {
-//            HashMap.this.clear();
+//            HashMap7.this.clear();
 //        }
 //    }
 //
@@ -1017,7 +1017,7 @@
 //            return containsValue(o);
 //        }
 //        public void clear() {
-//            HashMap.this.clear();
+//            HashMap7.this.clear();
 //        }
 //    }
 //
@@ -1064,7 +1064,7 @@
 //            return size;
 //        }
 //        public void clear() {
-//            HashMap.this.clear();
+//            HashMap7.this.clear();
 //        }
 //    }
 //
@@ -1136,7 +1136,7 @@
 //                // and desired load (if >= 0.25)
 //                mappings * Math.min(1 / loadFactor, 4.0f),
 //                // we have limits...
-//                HashMap.MAXIMUM_CAPACITY);
+//                HashMap7.MAXIMUM_CAPACITY);
 //        int capacity = 1;
 //        // find smallest power of two which holds all mappings
 //        while (capacity < initialCapacity) {

@@ -1,6 +1,4 @@
-package com.ly.base.jvm.monitor.commandline.jstat;
-
-import org.junit.Test;
+package com.ly.base.jvm.monitor.commandline.jmap;
 
 import java.util.ArrayList;
 
@@ -26,10 +24,5 @@ public class GCTest {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Test
-    public void test1() {
-        System.out.println(5000 - System.currentTimeMillis() % 1000);
     }
 }

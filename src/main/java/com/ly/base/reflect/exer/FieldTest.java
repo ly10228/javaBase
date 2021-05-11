@@ -1,12 +1,16 @@
 package com.ly.base.reflect.exer;
 
+import com.google.common.collect.Lists;
 import com.ly.base.reflect.exer.dto.Person;
+import lombok.Data;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author luoyong
@@ -72,4 +76,47 @@ public class FieldTest {
         }
     }
 
+
+    @Test
+    public void testRand() {
+        List<AgentStatus> agentStatuses = Lists.newArrayList();
+        agentStatuses.add(new AgentStatus("1", "ly", "0"));
+        agentStatuses.add(new AgentStatus("2", "lll", "0"));
+        agentStatuses.add(new AgentStatus("3", "zy", "0"));
+
+
+        for (int i = 0; i < 5; i++) {
+            //取随机数
+            long seed = System.nanoTime();
+            Random seedRandom = new Random(seed);
+            int index = seedRandom.nextInt(agentStatuses.size());
+            System.out.print(index + "-->");
+        }
+        System.out.println("===================================");
+
+        for (int i = 0; i < 5; i++) {
+            Random seedRandom = new Random();
+            int index = seedRandom.nextInt(agentStatuses.size());
+            System.out.print(index + "-->");
+        }
+
+
+    }
+
+
+    @Data
+    static class AgentStatus {
+
+        private String cno;
+
+        private String name;
+
+        private String state;
+
+        public AgentStatus(String cno, String name, String state) {
+            this.cno = cno;
+            this.name = name;
+            this.state = state;
+        }
+    }
 }

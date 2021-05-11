@@ -2,6 +2,7 @@ package com.ly.java8.streamaapi;
 
 import com.ly.java8.streamaapi.dto.StreamEmployee;
 import com.ly.java8.streamaapi.enm.StatusEnm;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -312,5 +313,15 @@ public class StreamTerminationApiTest {
         String strTwo = employeeList.stream().map(StreamEmployee::getName).collect(Collectors.joining(",", "----", "----"));
 
         System.out.println(strTwo);
+    }
+
+    @Test
+    public void test() {
+        String s = "null";
+        if (StringUtils.isBlank(s) || s.equals("null")) {
+            System.out.println("无值");
+        } else {
+            System.out.println("有值");
+        }
     }
 }

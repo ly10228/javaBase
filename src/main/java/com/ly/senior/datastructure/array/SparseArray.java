@@ -2,6 +2,8 @@ package com.ly.senior.datastructure.array;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 
 /**
  * @author luoyong
@@ -38,6 +40,7 @@ public class SparseArray {
         priChessArr[4][5] = 2;
         //打印二维数组
         System.out.println("原始数组是");
+        System.out.println(Arrays.toString(priChessArr));
         for (int[] row : priChessArr) {
             for (int data : row) {
                 System.out.printf("%d\t", data);
