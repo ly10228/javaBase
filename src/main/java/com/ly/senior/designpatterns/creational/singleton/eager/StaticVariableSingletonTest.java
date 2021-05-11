@@ -36,7 +36,7 @@ public class StaticVariableSingletonTest {
 class StaticVariableSingleton {
 
     /**
-     * 构造器私有化, 外部能new
+     * 1.构造器私有化, 外部不能new
      */
     private StaticVariableSingleton() {
 
