@@ -9,9 +9,7 @@ package com.ly.senior.designpatterns.sgg.behavioral.strategy;
 public class MainTest {
 
     public static void main(String[] args) {
-
         GameStrategy gameStrategy = new RandomStrategy();
-
         TeamGNR teamGNR = new TeamGNR();
         teamGNR.setGameStrategy(gameStrategy);
         teamGNR.startGame();
