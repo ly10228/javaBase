@@ -176,9 +176,21 @@ public class StreamOperateApiTest {
             if (eOne.getAge() == eTwo.getAge()) {
                 return eOne.getName().compareTo(eTwo.getName());
             } else {
-                return -Integer.compare(eOne.getAge(), eTwo.getAge());
+                return Integer.compare(eOne.getAge(), eTwo.getAge());
             }
         }).forEach(System.out::println);
+
+        System.out.println();
+
+        employeeList.stream().sorted((eOne, eTwo) -> {
+            return -Integer.compare(eOne.getAge(), eTwo.getAge());
+        }).forEach(System.out::println);
+
+        System.out.println(StreamOperateApiTest.class.getSimpleName());
     }
 
+    @Test
+    public void testSorted1() {
+        System.out.println(new Integer(3).compareTo(new Integer(2)));
+    }
 }
