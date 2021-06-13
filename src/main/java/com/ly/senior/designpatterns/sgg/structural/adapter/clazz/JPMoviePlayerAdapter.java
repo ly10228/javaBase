@@ -1,7 +1,7 @@
-package com.ly.senior.designpatterns.structured.sgg.adapter.clazz;
+package com.ly.senior.designpatterns.sgg.structural.adapter.clazz;
 
-import com.ly.senior.designpatterns.structured.sgg.adapter.Player;
-import com.ly.senior.designpatterns.structured.sgg.adapter.Zh_JPTranslator;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Player;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Zh_JPTranslator;
 
 /**
  * @author luoyong

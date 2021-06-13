@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.structured.sgg.adapter;
+package com.ly.senior.designpatterns.sgg.structural.adapter;
 
 /**
  * @author luoyong

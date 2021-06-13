@@ -1,7 +1,7 @@
-package com.ly.senior.designpatterns.structured.sgg.adapter.obj;
+package com.ly.senior.designpatterns.sgg.structural.adapter.obj;
 
-import com.ly.senior.designpatterns.structured.sgg.adapter.Player;
-import com.ly.senior.designpatterns.structured.sgg.adapter.Translator;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Player;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Translator;
 
 /**
  * @author luoyong

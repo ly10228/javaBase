@@ -1,6 +1,6 @@
-package com.ly.senior.designpatterns.structured.sgg.adapter.clazz;
+package com.ly.senior.designpatterns.sgg.structural.adapter.clazz;
 
-import com.ly.senior.designpatterns.structured.sgg.adapter.MoviePlayer;
+import com.ly.senior.designpatterns.sgg.structural.adapter.MoviePlayer;
 
 /**
  * @author luoyong

@@ -1,9 +1,9 @@
-package com.ly.senior.designpatterns.structured.sgg.adapter.obj;
+package com.ly.senior.designpatterns.sgg.structural.adapter.obj;
 
-import com.ly.senior.designpatterns.structured.sgg.adapter.MoviePlayer;
-import com.ly.senior.designpatterns.structured.sgg.adapter.Player;
-import com.ly.senior.designpatterns.structured.sgg.adapter.Translator;
-import com.ly.senior.designpatterns.structured.sgg.adapter.Zh_JPTranslator;
+import com.ly.senior.designpatterns.sgg.structural.adapter.MoviePlayer;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Player;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Translator;
+import com.ly.senior.designpatterns.sgg.structural.adapter.Zh_JPTranslator;
 
 /**
  * @author luoyong
