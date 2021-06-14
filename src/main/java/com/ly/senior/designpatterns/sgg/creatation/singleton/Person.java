@@ -1,4 +1,4 @@
-package com.ly.senior.designpatterns.sgg.creatation;
+package com.ly.senior.designpatterns.sgg.creatation.singleton;
 
 import lombok.Data;
 
