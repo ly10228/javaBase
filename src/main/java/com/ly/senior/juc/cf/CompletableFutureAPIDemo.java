@@ -20,6 +20,27 @@ public class CompletableFutureAPIDemo {
             new LinkedBlockingDeque<>(50),
             Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
+
+    public static void main(String[] args) {
+        try {
+            for (int i = 0; i < 5000; i++) {
+                CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+                    try {
+                        //睡眠2s
+                        TimeUnit.SECONDS.sleep(3);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return 1;
+                }, threadPoolExecutor);
+            }
+        } catch (Exception ex) {
+            System.out.println("捕获到异常信息");
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
     /**
      * @return void
      * @Description: 以下四种api测试
