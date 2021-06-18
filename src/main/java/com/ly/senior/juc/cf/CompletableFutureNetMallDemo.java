@@ -75,6 +75,26 @@ public class CompletableFutureNetMallDemo {
                 .collect(Collectors.toList());
     }
 
+
+    /**
+     * @param mallList
+     * @param productName
+     * @return
+     * @Description: 这种写法错误 还是会一个一个阻塞
+     * @author luoyong
+     * @create 5:35 下午 2021/6/18
+     * @last modify by [LuoYong 5:35 下午 2021/6/18 ]
+     */
+    public static List<String> getPriceByASync1(List<NetMall> mallList, String productName) {
+        return mallList.stream()
+                .map(netMall -> CompletableFuture.supplyAsync(() -> String.format(productName + " in %s price is %" +
+                                ".2f", netMall.getMallName(),
+                        netMall.calcPrice(productName))))
+                .map(CompletableFuture::join)
+                .collect(Collectors.toList());
+    }
+
+
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
         List<String> list1 = getPriceByStep(list, "mysql");
@@ -93,6 +113,15 @@ public class CompletableFutureNetMallDemo {
         }
         long endTime2 = System.currentTimeMillis();
         System.out.println("----costTime: " + (endTime2 - startTime2) + " 毫秒");
+
+        long startTime3 = System.currentTimeMillis();
+        List<String> list3 = getPriceByASync1(list, "mysql");
+        for (String element : list3) {
+            System.out.println(element);
+        }
+        long endTime3 = System.currentTimeMillis();
+        System.out.println("----costTime: " + (endTime3 - startTime3) + " 毫秒");
+
 
     }
 }
