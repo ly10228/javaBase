@@ -17,13 +17,19 @@ public class InterruptDemo {
 
     public static void main(String[] args) {
 
+        //静态方法演示
+        //false
         System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
+        //false
         System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
         System.out.println("111111");
         Thread.currentThread().interrupt();///----false---> true
         System.out.println("222222");
+        //true
         System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
+        //false
         System.out.println(Thread.currentThread().getName() + "---" + Thread.interrupted());
+        m5();
     }
 
     /**
@@ -119,6 +125,33 @@ public class InterruptDemo {
         }, "t2").start();
     }
 
+
+    @Test
+    public void m6() {
+        Thread t1 = new Thread(() -> {
+            while (true) {
+                if (Thread.currentThread().isInterrupted()) {
+                    System.out.println("-----isInterrupted() = true，程序结束。");
+                    break;
+                }
+                System.out.println("------hello Interrupt");
+            }
+        }, "t1");
+        t1.start();
+
+        //false
+        System.out.println("*********************" + t1.isInterrupted());
+        //暂定5s
+        try {
+            TimeUnit.MILLISECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //设置中断标志为true
+        t1.interrupt();
+        //true
+        System.out.println("*********************" + t1.isInterrupted());
+    }
 
     /**
      * @return void
