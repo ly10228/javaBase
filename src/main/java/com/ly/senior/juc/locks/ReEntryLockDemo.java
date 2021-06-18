@@ -28,7 +28,8 @@ public class ReEntryLockDemo {
                 try {
                     System.out.println(Thread.currentThread().getName() + "\t" + "-----内层");
                 } finally {
-                    lock.unlock();
+                    //注意 加锁几次 就一定要解锁几次 不然其他线程无法持有该锁
+//                    lock.unlock();
                 }
             } finally {
                 lock.unlock();
