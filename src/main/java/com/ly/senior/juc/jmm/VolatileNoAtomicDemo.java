@@ -9,6 +9,15 @@ import java.util.concurrent.TimeUnit;
  * @Description: volatile不保证原子性
  **/
 public class VolatileNoAtomicDemo {
+
+    /**
+     * @param args
+     * @return void
+     * @Description: 为何数值总是加不到1万
+     * @author luoyong
+     * @create 8:48 下午 2021/6/19
+     * @last modify by [LuoYong 8:48 下午 2021/6/19 ]
+     */
     public static void main(String[] args) throws InterruptedException {
         MyNumber myNumber = new MyNumber();
 
