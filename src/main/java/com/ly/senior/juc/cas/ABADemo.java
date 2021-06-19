@@ -12,6 +12,9 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  **/
 public class ABADemo {
     static AtomicInteger atomicInteger = new AtomicInteger(100);
+    /**
+     * 初始值100 版本号1
+     */
     static AtomicStampedReference<Integer> atomicStampedReference = new AtomicStampedReference<>(100, 1);
 
     public static void main(String[] args) {
@@ -45,6 +48,13 @@ public class ABADemo {
         }, "t4").start();
     }
 
+    /**
+     * @return void
+     * @Description: aba问题的引出
+     * @author luoyong
+     * @create 10:20 下午 2021/6/19
+     * @last modify by [LuoYong 10:20 下午 2021/6/19 ]
+     */
     public static void abaProblem() {
         new Thread(() -> {
             atomicInteger.compareAndSet(100, 101);
