@@ -17,7 +17,7 @@ public class SpinLockDemo {
     public void MyLock() {
         System.out.println(Thread.currentThread().getName() + "\t" + "---come in");
         while (!atomicReference.compareAndSet(null, Thread.currentThread())) {
-
+            System.out.println("自旋中");
         }
         System.out.println(Thread.currentThread().getName() + "\t" + "---持有锁成功");
     }
@@ -32,8 +32,9 @@ public class SpinLockDemo {
 
         new Thread(() -> {
             spinLockDemo.MyLock();
+            System.out.println("张三来了");
             try {
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.MILLISECONDS.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -42,6 +43,7 @@ public class SpinLockDemo {
 
         new Thread(() -> {
             spinLockDemo.MyLock();
+            System.out.println("李四来了");
             spinLockDemo.MyUnLock();
         }, "t2").start();
     }
