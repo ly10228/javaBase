@@ -1,11 +1,15 @@
 package com.ly.java8.streamaapi;
 
 import com.google.common.collect.Lists;
+import com.ly.java8.streamaapi.dto.Person;
 import com.ly.java8.streamaapi.dto.StreamEmployee;
 import com.ly.java8.streamaapi.enm.StatusEnm;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -192,5 +196,30 @@ public class StreamOperateApiTest {
     @Test
     public void testSorted1() {
         System.out.println(new Integer(3).compareTo(new Integer(2)));
+    }
+
+    @Test
+    public void testTimeOrder() {
+        List<Person> personList = new ArrayList<>();
+        Person p1 = new Person();
+        p1.setId(1L);
+        p1.setDate(DateUtils.addDays(new Date(), -1));
+
+        Person p2 = new Person();
+        p2.setId(2L);
+        p2.setDate(DateUtils.addDays(new Date(), -2));
+
+        Person p3 = new Person();
+        p3.setId(3L);
+        p3.setDate(new Date());
+
+        personList.add(p1);
+        personList.add(p2);
+        personList.add(p3);
+
+        personList.stream().sorted((one, two) -> {
+            return -one.getDate().compareTo(two.getDate());
+        }).forEach(System.out::println);
+
     }
 }
